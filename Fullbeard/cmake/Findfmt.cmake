@@ -22,12 +22,6 @@ if(fmt_FOUND)
     set(fmt_INCLUDE_DIRS ${fmt_INCLUDE_DIR} )
     set(fmt_LIBRARIES ${fmt_LIBRARY} )
 
-    mark_as_advanced(
-        fmt_LIBRARY
-        fmt_INCLUDE_DIR
-        fmt_DIR
-    )
-
 else()
     message(STATUS "Pulling in external fmt library")
 

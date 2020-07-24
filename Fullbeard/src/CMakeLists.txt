@@ -17,6 +17,8 @@ target_include_directories(
     Fullbeard PUBLIC
     ${PROJECT_SOURCE_DIR}/include
     ${PROJECT_SOURCE_DIR}/vendor/include
+    ${imgui_SOURCE_DIR}
+    ${imgui_SOURCE_DIR}/examples
 )
 
 target_link_libraries(
@@ -27,6 +29,7 @@ target_link_libraries(
     glfw
     fmt
     spdlog
+    imgui
 )
 
 target_compile_definitions(

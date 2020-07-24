@@ -22,12 +22,6 @@ if(spdlog_FOUND)
     set(spdlog_INCLUDE_DIRS ${spdlog_INCLUDE_DIR} )
     set(spdlog_LIBRARIES ${spdlog_LIBRARY} )
 
-    mark_as_advanced(
-        spdlog_LIBRARY
-        spdlog_INCLUDE_DIR
-        spdlog_DIR
-    )
-
 else()
     message(STATUS "Pulling in external spdlog")
 
@@ -49,6 +43,11 @@ else()
     target_include_directories(
         spdlog PRIVATE
         ${PROJECT_SOURCE_DIR}/build/_deps/fmt-src/include/
+    )
+
+    target_link_libraries(
+        spdlog PRIVATE
+        fmt
     )
 
     if(NOT spdlog_POPULATED)

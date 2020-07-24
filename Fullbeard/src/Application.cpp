@@ -1,9 +1,13 @@
 #include "Fullbeard/Systems/Application.hpp"
 
 #include "Fullbeard/util.hpp"
-#include "fullbeard_pch.hpp"
 
+#include "imgui.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
 #include <GLFW/glfw3.h>
+
+#include "fullbeard_pch.hpp"
 
 namespace Fullbeard
 {
@@ -22,10 +26,26 @@ namespace Fullbeard
     {
         running = true;
 
+        GLfloat background_color[] = { 0.2f, 0.3f, 0.3f, 1.0f };
+
         while(running)
         {
-            glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+            glClearColor(background_color[0], background_color[1],
+                        background_color[2], background_color[3]);
             glClear(GL_COLOR_BUFFER_BIT);
+
+            ImGui_ImplOpenGL3_NewFrame();
+            ImGui_ImplGlfw_NewFrame();
+            ImGui::NewFrame();
+
+            ImGui::Begin("Properties!", nullptr, ImGuiWindowFlags_NoCollapse);
+
+            ImGui::ColorEdit4("Background Color", background_color);
+
+            ImGui::End();
+
+            ImGui::Render();
+            ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
             for(Layer *layer : layer_stack)
             {

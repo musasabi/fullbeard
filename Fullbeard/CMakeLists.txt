@@ -16,6 +16,7 @@ find_package(glad    REQUIRED)
 find_package(glfw3   REQUIRED)
 find_package(fmt     REQUIRED)
 find_package(spdlog  REQUIRED)
+find_package(imgui   REQUIRED)
 
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
     add_subdirectory(src)
@@ -32,6 +33,11 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 
     if(NOT EXISTS ${spdlog_INCLUDE_DIR})
         list(APPEND EXPORT_LIBS "spdlog")
+    endif()
+
+
+    if(NOT EXISTS ${imgui_INCLUDE_DIR})
+        list(APPEND EXPORT_LIBS "imgui")
     endif()
 
     export(

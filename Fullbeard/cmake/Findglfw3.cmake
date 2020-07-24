@@ -22,12 +22,6 @@ if(glfw3_FOUND)
     set(glfw3_INCLUDE_DIRS ${glfw3_INCLUDE_DIR} )
     set(glfw3_LIBRARIES ${glfw3_LIBRARY} )
 
-    mark_as_advanced(
-        glfw3_LIBRARY
-        glfw3_INCLUDE_DIR
-        glfw3_DIR
-    )
-
 else()
     message(STATUS "Pulling in external GLFW")
 

@@ -5,6 +5,11 @@
 #include "Fullbeard/Events/EventKey.hpp"
 #include "Fullbeard/util.hpp"
 
+#include "imgui.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
+#include <glad/glad.h>
+
 #include "fullbeard_pch.hpp"
 
 namespace Fullbeard
@@ -66,6 +71,13 @@ namespace Fullbeard
         Log::core_trace("OpenGL v{0}.{1}", GLVersion.major, GLVersion.minor);
         Log::core_trace("Renderer: {0}", glGetString(GL_RENDERER));
         Log::core_trace("Windowing: GLFW v{0}", glfwGetVersionString());
+
+        IMGUI_CHECKVERSION();
+        ImGui::CreateContext();
+
+        ImGui_ImplGlfw_InitForOpenGL(window, true);
+        ImGui_ImplOpenGL3_Init(nullptr);
+        ImGui::StyleColorsDark();
 
         glfwSetWindowSizeCallback(window, [](GLFWwindow *t_window,
                                              int t_height, int t_width)
