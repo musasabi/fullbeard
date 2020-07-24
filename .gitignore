@@ -1,6 +1,7 @@
 imgui.ini
 *~
-Sandbox
+./Sandbox/Sandbox
+
 
 # temporary files which can be created if a process still has a handle open of a deleted file
 .fuse_hidden*
@@ -19,18 +20,12 @@ Sandbox
 *.diff
 
 
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+.vscode/
 *.code-workspace
-
-# Local History for Visual Studio Code
 .history/
 
 
-build
+build/
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles
@@ -42,8 +37,8 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 _deps
-src/
-tmp/
+./src
+./tmp
 
 # Prerequisites
 *.d
