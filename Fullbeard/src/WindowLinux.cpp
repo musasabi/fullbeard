@@ -10,6 +10,7 @@
 namespace Fullbeard
 {
     static bool glfw_initialized = false;
+    static bool glad_initialized = false;
 
     static void glfwErrorCallback(int t_error, const char* t_message)
     {
@@ -54,6 +55,17 @@ namespace Fullbeard
         glfwMakeContextCurrent(window);
         glfwSetWindowUserPointer(window, &data);
         set_vsync(true);
+
+        if(!glad_initialized)
+        {
+            int result = gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
+            assert(((void) "Could not initialize glad", result));
+            glad_initialized = true;
+        }
+
+        Log::core_trace("OpenGL v{0}.{1}", GLVersion.major, GLVersion.minor);
+        Log::core_trace("Renderer: {0}", glGetString(GL_RENDERER));
+        Log::core_trace("Windowing: GLFW v{0}", glfwGetVersionString());
 
         glfwSetWindowSizeCallback(window, [](GLFWwindow *t_window,
                                              int t_height, int t_width)

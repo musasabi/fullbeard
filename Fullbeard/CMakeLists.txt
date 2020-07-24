@@ -5,7 +5,6 @@ project(
     Fullbeard
     VERSION 0.1.0
     DESCRIPTION "A follow-along of the Hazel engine by TheCherno"
-    LANGUAGES CXX
 )
 
 find_package(Threads REQUIRED)
@@ -18,7 +17,7 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
     add_subdirectory(src)
 
     export(
-        TARGETS Fullbeard
+        TARGETS Fullbeard glad
         FILE ${PROJECT_SOURCE_DIR}/FullbeardConfig.cmake
     )
 endif()

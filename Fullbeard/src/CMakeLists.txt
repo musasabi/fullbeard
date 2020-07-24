@@ -4,7 +4,22 @@ file(
 )
 
 add_library(
-    Fullbeard SHARED
+    glad
+    ${PROJECT_SOURCE_DIR}/vendor/src/glad.c
+)
+
+target_link_libraries(
+    glad
+    ${CMAKE_DL_LIBS}
+)
+
+target_include_directories(
+    glad PRIVATE
+    ${PROJECT_SOURCE_DIR}/vendor/include
+)
+
+add_library(
+    Fullbeard STATIC
     ${cpp_source}
 )
 
@@ -16,6 +31,7 @@ target_precompile_headers(
 target_include_directories(
     Fullbeard PUBLIC
     ${PROJECT_SOURCE_DIR}/include
+    ${PROJECT_SOURCE_DIR}/vendor/include
 )
 
 target_link_libraries(
@@ -25,6 +41,7 @@ target_link_libraries(
     spdlog
     OpenGL::GL
     glfw
+    glad
 )
 
 target_compile_options(
