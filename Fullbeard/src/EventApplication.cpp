@@ -43,7 +43,7 @@ namespace Fullbeard
 
     std::string EventWindowClose::to_string() const
     {
-        return "Window closed!";
+        return "Window closed.";
     }
 
     int EventWindowClose::get_category_flags() const

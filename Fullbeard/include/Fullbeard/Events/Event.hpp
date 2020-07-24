@@ -43,7 +43,6 @@ namespace Fullbeard
                 return get_category_flags() & t_category;
             }
 
-        protected:
             bool handled = false;
     };
 

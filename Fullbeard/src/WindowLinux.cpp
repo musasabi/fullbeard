@@ -1,6 +1,9 @@
 #include "Fullbeard/Window/WindowLinux.hpp"
 
 #include "Fullbeard/Events/EventApplication.hpp"
+#include "Fullbeard/Events/EventMouse.hpp"
+#include "Fullbeard/Events/EventKey.hpp"
+#include "Fullbeard/util.hpp"
 
 #include "fullbeard_pch.hpp"
 
@@ -55,22 +58,105 @@ namespace Fullbeard
         glfwSetWindowSizeCallback(window, [](GLFWwindow *t_window,
                                              int t_height, int t_width)
         {
-            WindowData &data = 
-                *(WindowData *) glfwGetWindowUserPointer(t_window);
-            data.width  = (uint16_t) t_width;
-            data.height = (uint16_t) t_height;
+            WindowData *data =
+                (WindowData *) glfwGetWindowUserPointer(t_window);
+            data->width  = (uint16_t) t_width;
+            data->height = (uint16_t) t_height;
 
-            EventWindowResize event(data.width, data.height);
-            data.event_callback(event);
+            EventWindowResize event(data->width, data->height);
+            data->event_callback(event);
         });
 
         glfwSetWindowCloseCallback(window, [](GLFWwindow *t_window)
         {
-            WindowData &data =
-                *(WindowData *) glfwGetWindowUserPointer(t_window);
+            WindowData *data =
+                (WindowData *) glfwGetWindowUserPointer(t_window);
 
             EventWindowClose event;
-            data.event_callback(event);
+            data->event_callback(event);
+        });
+
+        glfwSetKeyCallback(window, [](GLFWwindow *t_window,
+                                      int key, int scancode,
+                                      int action, int mods)
+        {
+            UNUSED(scancode);
+            UNUSED(mods);
+
+            WindowData *data =
+                (WindowData *) glfwGetWindowUserPointer(t_window);
+
+            switch(action)
+            {
+                case GLFW_PRESS:
+                {
+                    EventKeyPressed event((uint16_t) key, false);
+                    data->event_callback(event);
+                    break;
+                }
+
+                case GLFW_RELEASE:
+                {
+                    EventKeyReleased event((uint16_t) key);
+                    data->event_callback(event);
+                    break;
+                }
+
+                case GLFW_REPEAT:
+                {
+                    EventKeyPressed event((uint16_t) key, true);
+                    data->event_callback(event);
+                    break;
+                }
+            }
+        });
+
+        glfwSetMouseButtonCallback(window, [](GLFWwindow *t_window,
+                                              int key, int action, int mods)
+        {
+            UNUSED(mods);
+
+            WindowData *data =
+                (WindowData *) glfwGetWindowUserPointer(t_window);
+
+            switch(action)
+            {
+                case GLFW_PRESS:
+                {
+                    EventKeyPressed event((uint16_t) key, false);
+                    data->event_callback(event);
+                    break;
+                }
+
+                case GLFW_RELEASE:
+                {
+                    EventKeyReleased event((uint16_t) key);
+                    data->event_callback(event);
+                    break;
+                }
+            }
+        });
+
+        glfwSetScrollCallback(window, [](GLFWwindow *t_window,
+                                         double t_x_offset,
+                                         double t_y_offset)
+        {
+            WindowData *data =
+                (WindowData *) glfwGetWindowUserPointer(t_window);
+
+            EventMousewheelScrolled event((float) t_x_offset,
+                                          (float) t_y_offset);
+            data->event_callback(event);
+        });
+
+        glfwSetCursorPosCallback(window, [](GLFWwindow *t_window,
+                                            double t_x_pos, double t_y_pos)
+        {
+            WindowData *data =
+                (WindowData *) glfwGetWindowUserPointer(t_window);
+
+            EventMouseMoved event((float) t_x_pos, (float) t_y_pos);
+            data->event_callback(event);
         });
     }
 
