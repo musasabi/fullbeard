@@ -4,7 +4,7 @@ file(
 )
 
 add_library(
-    Fullbeard STATIC
+    Fullbeard SHARED
     ${cpp_source}
 )
 
@@ -30,6 +30,7 @@ target_link_libraries(
 target_compile_options(
     Fullbeard PRIVATE
     -Werror -Wall -Wextra -Wconversion -Wsign-conversion -pedantic-errors
+    -fdiagnostics-color=always
 )
 
 target_compile_definitions(

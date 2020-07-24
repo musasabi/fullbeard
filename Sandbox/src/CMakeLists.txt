@@ -6,6 +6,7 @@ add_executable(
 target_compile_options(
     Sandbox PRIVATE
     -Werror -Wall -Wextra -Wconversion -Wsign-conversion -pedantic-errors
+    -fdiagnostics-color=always
 )
 
 set_target_properties(

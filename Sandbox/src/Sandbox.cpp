@@ -1,11 +1,15 @@
 #include <Fullbeard/fullbeard.hpp>
 
+#include <iostream>
+
 class ExampleLayer : public Fullbeard::Layer
 {
     public:
         ExampleLayer():
         Layer("Example")
-        { }
+        {
+            std::cout << "LOOOOOOOOOL" << std::endl;
+        }
 
         void on_update() override
         {
