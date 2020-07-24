@@ -42,7 +42,7 @@ else()
 
     target_include_directories(
         spdlog PRIVATE
-        ${PROJECT_SOURCE_DIR}/build/_deps/fmt-src/include/
+        ${fmt_INCLUDE_DIRS}
     )
 
     target_link_libraries(
