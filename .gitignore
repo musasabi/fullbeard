@@ -11,6 +11,7 @@ imgui.ini
 
 
 build
+**/*Config.cmake
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles
