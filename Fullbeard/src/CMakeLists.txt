@@ -4,21 +4,6 @@ file(
 )
 
 add_library(
-    glad
-    ${PROJECT_SOURCE_DIR}/vendor/src/glad.c
-)
-
-target_link_libraries(
-    glad
-    ${CMAKE_DL_LIBS}
-)
-
-target_include_directories(
-    glad PRIVATE
-    ${PROJECT_SOURCE_DIR}/vendor/include
-)
-
-add_library(
     Fullbeard STATIC
     ${cpp_source}
 )
@@ -37,22 +22,22 @@ target_include_directories(
 target_link_libraries(
     Fullbeard
     ${CMAKE_THREAD_LIBS_INIT}
+    OpenGL::GL
+    glad
+    glfw
     fmt
     spdlog
-    OpenGL::GL
-    glfw
-    glad
+)
+
+target_compile_definitions(
+    Fullbeard PUBLIC
+    SPDLOG_FMT_EXTERNAL
 )
 
 target_compile_options(
     Fullbeard PRIVATE
     -Werror -Wall -Wextra -Wconversion -Wsign-conversion -pedantic-errors
     -fdiagnostics-color=always
-)
-
-target_compile_definitions(
-    Fullbeard PUBLIC
-    SPDLOG_FMT_EXTERNAL
 )
 
 set_target_properties(

@@ -7,7 +7,8 @@ project(
     LANGUAGES CXX
 )
 
-find_package(OpenGL REQUIRED)
+find_package(Threads REQUIRED)
+find_package(OpenGL  REQUIRED)
 
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
     set(Fullbeard_DIR ${PROJECT_SOURCE_DIR}/../Fullbeard/)
