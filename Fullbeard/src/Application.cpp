@@ -27,10 +27,10 @@ namespace Fullbeard
             glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
 
-            // for(Layer *layer : layer_stack)
-            // {
-            //     layer->on_update();
-            // }
+            for(Layer *layer : layer_stack)
+            {
+                layer->on_update();
+            }
 
             window->on_update();
         }
@@ -45,28 +45,28 @@ namespace Fullbeard
                       this,
                       std::placeholders::_1));
 
-        // for(rev_layer_iter layer = layer_stack.rbegin();
-        //     layer != layer_stack.rend();
-        //     layer++)
-        // {
-        //     (*layer)->on_event(t_event);
+        for(rev_layer_iter layer = layer_stack.rbegin();
+            layer != layer_stack.rend();
+            layer++)
+        {
+            (*layer)->on_event(t_event);
             
-        //     if(t_event.handled)
-        //     {
-        //         break;
-        //     }
-        // }
+            if(t_event.handled)
+            {
+                break;
+            }
+        }
     }
 
-    // void Application::push_layer(Layer *t_layer)
-    // {
-    //     layer_stack.push_layer(t_layer);
-    // }
+    void Application::push_layer(Layer *t_layer)
+    {
+        layer_stack.push_layer(t_layer);
+    }
 
-    // void Application::push_overlay(Layer *t_overlay)
-    // {
-    //     layer_stack.push_overlay(t_overlay);
-    // }
+    void Application::push_overlay(Layer *t_overlay)
+    {
+        layer_stack.push_overlay(t_overlay);
+    }
 
     bool Application::on_window_close(EventWindowClose &t_event)
     {

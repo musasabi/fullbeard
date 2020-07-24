@@ -3,7 +3,7 @@
 
 #include "../Events/EventApplication.hpp"
 #include "../Window/Window.hpp"
-// #include "../Systems/LayerStack.hpp"
+#include "../Systems/LayerStack.hpp"
 
 namespace Fullbeard
 {
@@ -17,15 +17,15 @@ namespace Fullbeard
 
             void on_event(Event &t_event);
 
-            // void push_layer(Layer *t_layer);
-            // void push_overlay(Layer *t_overlay);
+            void push_layer(Layer *t_layer);
+            void push_overlay(Layer *t_overlay);
 
         private:
             bool on_window_close(EventWindowClose &t_event);
 
             std::unique_ptr<Window> window;
             bool running = false;
-            // LayerStack layer_stack;
+            LayerStack layer_stack;
     };
 }
 
