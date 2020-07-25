@@ -2,7 +2,6 @@
 #define FULLBEARD_PCH_HPP__
 
 #include <cstdint>
-#include <cassert>
 #include <utility>
 
 #include <iostream>

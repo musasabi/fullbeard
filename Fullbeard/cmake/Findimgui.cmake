@@ -18,6 +18,7 @@ if(NOT imgui_FOUND)
     add_library(
         imgui
         ${imgui_SOURCE_DIR}/imgui.cpp
+        ${imgui_SOURCE_DIR}/imgui_demo.cpp
         ${imgui_SOURCE_DIR}/imgui_draw.cpp
         ${imgui_SOURCE_DIR}/imgui_widgets.cpp
         ${imgui_SOURCE_DIR}/examples/imgui_impl_glfw.cpp

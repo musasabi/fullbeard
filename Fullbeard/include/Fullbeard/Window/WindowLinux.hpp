@@ -35,7 +35,7 @@ namespace Fullbeard
                 {
                     data.event_callback = t_callback;
                 }
-            
+
             void on_update() override;
 
         private:

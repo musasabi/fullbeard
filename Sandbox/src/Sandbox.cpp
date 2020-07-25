@@ -10,7 +10,9 @@ class Sandbox : public Fullbeard::Application
 };
 
 Sandbox::Sandbox()
-{ }
+{
+    push_overlay(new Fullbeard::LayerImGUI());
+}
 
 Sandbox::~Sandbox()
 { }

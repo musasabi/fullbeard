@@ -10,7 +10,7 @@ namespace Fullbeard
     class Layer
     {
         public:
-            Layer(const std::string &name = "Layer");
+            Layer(const std::string &t_name = "Layer");
             virtual ~Layer();
 
             virtual void on_push();

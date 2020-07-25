@@ -24,6 +24,6 @@ namespace Fullbeard
 
     void Layer::on_event(Event &t_event)
     {
-        UNUSED(t_event);
+        UNUSED__(t_event);
     }
 }

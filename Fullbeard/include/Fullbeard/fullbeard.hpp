@@ -6,4 +6,6 @@
 #include "Systems/Application.hpp"
 #include "Systems/LayerStack.hpp"
 
+#include "Systems/LayerImGUI.hpp"
+
 #endif // FULLBEARD_HPP__

@@ -5,9 +5,6 @@
 #include "Fullbeard/Events/EventKey.hpp"
 #include "Fullbeard/util.hpp"
 
-#include "imgui.h"
-#include "imgui_impl_glfw.h"
-#include "imgui_impl_opengl3.h"
 #include <glad/glad.h>
 
 #include "fullbeard_pch.hpp"
@@ -49,7 +46,7 @@ namespace Fullbeard
         if(!glfw_initialized)
         {
             int result = glfwInit();
-            assert(((void) "Could not initialize GLFW", result));
+            ASSERT_CORE__(result, "Could not initialize GLFW");
             glfw_initialized = true;
 
             glfwSetErrorCallback(glfwErrorCallback);
@@ -64,20 +61,13 @@ namespace Fullbeard
         if(!glad_initialized)
         {
             int result = gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
-            assert(((void) "Could not initialize glad", result));
+            ASSERT_CORE__(result, "Could not initialize glad");
             glad_initialized = true;
         }
 
-        Log::core_trace("OpenGL v{0}.{1}", GLVersion.major, GLVersion.minor);
-        Log::core_trace("Renderer: {0}", glGetString(GL_RENDERER));
-        Log::core_trace("Windowing: GLFW v{0}", glfwGetVersionString());
-
-        IMGUI_CHECKVERSION();
-        ImGui::CreateContext();
-
-        ImGui_ImplGlfw_InitForOpenGL(window, true);
-        ImGui_ImplOpenGL3_Init(nullptr);
-        ImGui::StyleColorsDark();
+        Log::core_info("OpenGL v{0}.{1}", GLVersion.major, GLVersion.minor);
+        Log::core_info("Renderer: {0}", glGetString(GL_RENDERER));
+        Log::core_info("Windowing: GLFW v{0}", glfwGetVersionString());
 
         glfwSetWindowSizeCallback(window, [](GLFWwindow *t_window,
                                              int t_height, int t_width)
@@ -104,8 +94,8 @@ namespace Fullbeard
                                       int key, int scancode,
                                       int action, int mods)
         {
-            UNUSED(scancode);
-            UNUSED(mods);
+            UNUSED__(scancode);
+            UNUSED__(mods);
 
             WindowData *data =
                 (WindowData *) glfwGetWindowUserPointer(t_window);
@@ -138,7 +128,7 @@ namespace Fullbeard
         glfwSetMouseButtonCallback(window, [](GLFWwindow *t_window,
                                               int key, int action, int mods)
         {
-            UNUSED(mods);
+            UNUSED__(mods);
 
             WindowData *data =
                 (WindowData *) glfwGetWindowUserPointer(t_window);
@@ -184,14 +174,14 @@ namespace Fullbeard
         });
     }
 
-	void WindowLinux::set_vsync(const bool enabled)
+	void WindowLinux::set_vsync(const bool t_enabled)
 	{
-		if (enabled)
+		if (t_enabled)
 			glfwSwapInterval(1);
 		else
 			glfwSwapInterval(0);
 
-		data.vsync = enabled;
+		data.vsync = t_enabled;
 	}
 
 	void WindowLinux::on_update()
