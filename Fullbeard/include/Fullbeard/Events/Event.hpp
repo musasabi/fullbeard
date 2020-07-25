@@ -13,7 +13,7 @@ namespace Fullbeard
     {
         None = 0,
         AppTick, AppUpdate, AppRender,
-		KeyPressed, KeyReleased,
+		KeyPressed, KeyReleased, KeyTyped,
 		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled,
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved
     };

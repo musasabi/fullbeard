@@ -70,4 +70,30 @@ namespace Fullbeard
     {
         return EventType::KeyReleased;
     }
+
+//##############################################################################
+// class Fullbeard::EventKeyTyped
+
+    EventKeyTyped::EventKeyTyped(uint16_t t_keycode):
+    EventKey(t_keycode)
+    { }
+
+    std::string EventKeyTyped::to_string() const
+    {
+        std::stringstream ss;
+
+        ss << "EventKeyTyped: " << keycode;
+
+        return ss.str();
+    }
+
+    EventType EventKeyTyped::get_event_type() const
+    {
+        return get_static_type();
+    }
+
+    EventType EventKeyTyped::get_static_type()
+    {
+        return EventType::KeyTyped;
+    }
 }

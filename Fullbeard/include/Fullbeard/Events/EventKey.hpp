@@ -42,6 +42,16 @@ namespace Fullbeard
             virtual EventType get_event_type()  const override;
             static  EventType get_static_type();
     };
+
+    class EventKeyTyped : public EventKey
+    {
+        public:
+            EventKeyTyped(const uint16_t t_keycode);
+
+            std::string to_string() const override;
+            virtual EventType get_event_type()  const override;
+            static  EventType get_static_type();
+    };
 }
 
 #endif // FULLBEARD_EVENT_KEY_HPP__

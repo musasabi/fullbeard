@@ -97,6 +97,8 @@ namespace Fullbeard
             BIND_EVENT_FN__(LayerImGUI::on_key_pressed));
 		dispatcher.dispatch<EventKeyReleased>(
             BIND_EVENT_FN__(LayerImGUI::on_key_released));
+		dispatcher.dispatch<EventKeyTyped>(
+            BIND_EVENT_FN__(LayerImGUI::on_key_typed));
 		dispatcher.dispatch<EventWindowResize>(
             BIND_EVENT_FN__(LayerImGUI::on_window_resized));
     }
@@ -106,8 +108,6 @@ namespace Fullbeard
         ImGuiIO &io = ImGui::GetIO();
 		io.MouseDown[t_event.get_keycode()] = true;
 
-        Log::core_trace("imgui mouse press");
-
 		return false;
     }
     
@@ -115,8 +115,6 @@ namespace Fullbeard
     {
         ImGuiIO &io = ImGui::GetIO();
 		io.MouseDown[t_event.get_keycode()] = false;
-
-        Log::core_trace("imgui mouse release");
 
 		return false;
     }
@@ -159,6 +157,15 @@ namespace Fullbeard
     {
         ImGuiIO &io = ImGui::GetIO();
 		io.KeysDown[t_event.get_keycode()] = false;
+
+		return false;
+    }
+    
+    bool LayerImGUI::on_key_typed(EventKeyTyped &t_event) 
+    {
+		ImGuiIO& io = ImGui::GetIO();
+		uint16_t keycode = t_event.get_keycode();
+        io.AddInputCharacter(keycode);
 
 		return false;
     }

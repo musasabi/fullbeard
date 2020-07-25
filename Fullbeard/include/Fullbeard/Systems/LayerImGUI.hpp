@@ -26,6 +26,7 @@ namespace Fullbeard
             bool on_mouse_moved(EventMouseMoved &t_event);
             bool on_key_pressed(EventKeyPressed &t_event);
             bool on_key_released(EventKeyReleased &t_event);
+            bool on_key_typed(EventKeyTyped &t_event);
             bool on_window_resized(EventWindowResize &t_event);
 
             float time = 0.0f;

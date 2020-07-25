@@ -125,6 +125,15 @@ namespace Fullbeard
             }
         });
 
+        glfwSetCharCallback(window, [](GLFWwindow *t_window, uint t_keycode)
+        {
+            WindowData *data =
+                (WindowData *) glfwGetWindowUserPointer(t_window);
+
+            EventKeyTyped event((uint16_t) t_keycode);
+            data->event_callback(event);
+        });
+
         glfwSetMouseButtonCallback(window, [](GLFWwindow *t_window,
                                               int key, int action, int mods)
         {
