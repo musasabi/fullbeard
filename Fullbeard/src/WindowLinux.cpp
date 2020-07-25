@@ -137,14 +137,14 @@ namespace Fullbeard
             {
                 case GLFW_PRESS:
                 {
-                    EventKeyPressed event((uint16_t) key, false);
+                    EventMouseButtonPressed event((uint16_t) key, false);
                     data->event_callback(event);
                     break;
                 }
 
                 case GLFW_RELEASE:
                 {
-                    EventKeyReleased event((uint16_t) key);
+                    EventMouseButtonReleased event((uint16_t) key);
                     data->event_callback(event);
                     break;
                 }

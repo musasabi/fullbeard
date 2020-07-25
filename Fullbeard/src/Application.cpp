@@ -44,6 +44,7 @@ namespace Fullbeard
 
     void Application::on_event(Event &t_event)
     {
+        Log::core_trace("Application {0}", t_event);
         EventDispatcher dispatcher(t_event);
         dispatcher.dispatch<EventWindowClose>(
             BIND_EVENT_FN__(Application::on_window_close));

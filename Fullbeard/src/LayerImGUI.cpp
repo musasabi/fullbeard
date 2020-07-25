@@ -82,6 +82,7 @@ namespace Fullbeard
     
     void LayerImGUI::on_event(Event &t_event) 
     {
+        // Log::core_trace("ImGUI {0}", t_event);
 		EventDispatcher dispatcher(t_event);
 
 		dispatcher.dispatch<EventMouseButtonPressed>(

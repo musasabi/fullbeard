@@ -30,7 +30,7 @@ namespace Fullbeard
         std::stringstream ss;
 
         ss << "EventKeyPressed: " << keycode
-           << (repeated?" (repeat)":" ") << std::endl;
+           << (repeated?" (repeat)":" ");
 
         return ss.str();
     }
@@ -56,7 +56,7 @@ namespace Fullbeard
     {
         std::stringstream ss;
 
-        ss << "EventKeyReleased: " << keycode << std::endl;
+        ss << "EventKeyReleased: " << keycode;
 
         return ss.str();
     }
