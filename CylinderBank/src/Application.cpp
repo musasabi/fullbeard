@@ -37,9 +37,6 @@ namespace CylinderBank
                 layer->on_update();
             }
 
-            auto [mouse_x, mouse_y] = Input::get_mouse_position();
-            Log::core_trace("{0}, {1}", mouse_x, mouse_y);
-
             window->on_update();
         }
     }

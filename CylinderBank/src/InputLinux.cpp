@@ -27,8 +27,6 @@ namespace CylinderBank
         return state == GLFW_PRESS || state == GLFW_REPEAT;
     }
 
-
-
     bool InputLinux::is_mouse_button_pressed_imp(uint16_t t_keycode) 
     {
         GLFWwindow *window = get_window();

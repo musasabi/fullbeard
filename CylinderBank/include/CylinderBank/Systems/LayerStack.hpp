@@ -23,11 +23,11 @@ namespace CylinderBank
             void push_overlay(Layer *overlay);
             void pop_overlay(Layer  *overlay);
 
-            layer_iter begin() { return layers.begin(); }
-            layer_iter end()   { return layers.end();   }
+            inline layer_iter begin() { return layers.begin(); }
+            inline layer_iter end()   { return layers.end();   }
 
-            rev_layer_iter rbegin() { return layers.rbegin(); }
-            rev_layer_iter rend()   { return layers.rend();   }
+            inline rev_layer_iter rbegin() { return layers.rbegin(); }
+            inline rev_layer_iter rend()   { return layers.rend();   }
 
         private:
             std::vector<Layer *> layers;

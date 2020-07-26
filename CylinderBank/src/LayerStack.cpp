@@ -25,6 +25,14 @@ namespace CylinderBank
     void LayerStack::push_overlay(Layer *t_overlay)
     {
         layers.emplace_back(t_overlay);
+
+        // if the first layer pushed is an overlay, it invalidates
+        // the layer_insert iterator, meaning the next layer push
+        // will segfault
+        if(layers.size() == 1)
+        {
+            layer_insert = layers.begin();
+        }
     }
 
     void LayerStack::pop_layer(Layer *t_layer)

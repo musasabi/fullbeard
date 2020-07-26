@@ -5,6 +5,7 @@
 #include "imgui_impl_glfw.h"
 #include "CylinderBank/Systems/Application.hpp"
 #include "CylinderBank/util.hpp"
+#include "CylinderBank/Input/keycodes.hpp"
 
 #include<GLFW/glfw3.h>
 #include "CylinderBank_pch.hpp"
@@ -29,28 +30,28 @@ namespace CylinderBank
         io.BackendFlags |= ImGuiBackendFlags_HasMouseCursors;
         io.BackendFlags |= ImGuiBackendFlags_HasSetMousePos;
 
-		io.KeyMap[ImGuiKey_Tab]        = GLFW_KEY_TAB;
-		io.KeyMap[ImGuiKey_LeftArrow]  = GLFW_KEY_LEFT;
-		io.KeyMap[ImGuiKey_RightArrow] = GLFW_KEY_RIGHT;
-		io.KeyMap[ImGuiKey_UpArrow]    = GLFW_KEY_UP;
-		io.KeyMap[ImGuiKey_DownArrow]  = GLFW_KEY_DOWN;
-		io.KeyMap[ImGuiKey_PageUp]     = GLFW_KEY_PAGE_UP;
-		io.KeyMap[ImGuiKey_PageDown]   = GLFW_KEY_PAGE_DOWN;
-		io.KeyMap[ImGuiKey_Home]       = GLFW_KEY_HOME;
-		io.KeyMap[ImGuiKey_End]        = GLFW_KEY_END;
-		io.KeyMap[ImGuiKey_Insert]     = GLFW_KEY_INSERT;
-		io.KeyMap[ImGuiKey_Delete]     = GLFW_KEY_DELETE;
-		io.KeyMap[ImGuiKey_Backspace]  = GLFW_KEY_BACKSPACE;
-		io.KeyMap[ImGuiKey_Space]      = GLFW_KEY_SPACE;
-		io.KeyMap[ImGuiKey_Enter]      = GLFW_KEY_ENTER;
-		io.KeyMap[ImGuiKey_Escape]     = GLFW_KEY_ESCAPE;
+		io.KeyMap[ImGuiKey_Tab]        = CB_KEY_TAB;
+		io.KeyMap[ImGuiKey_LeftArrow]  = CB_KEY_LEFT;
+		io.KeyMap[ImGuiKey_RightArrow] = CB_KEY_RIGHT;
+		io.KeyMap[ImGuiKey_UpArrow]    = CB_KEY_UP;
+		io.KeyMap[ImGuiKey_DownArrow]  = CB_KEY_DOWN;
+		io.KeyMap[ImGuiKey_PageUp]     = CB_KEY_PAGE_UP;
+		io.KeyMap[ImGuiKey_PageDown]   = CB_KEY_PAGE_DOWN;
+		io.KeyMap[ImGuiKey_Home]       = CB_KEY_HOME;
+		io.KeyMap[ImGuiKey_End]        = CB_KEY_END;
+		io.KeyMap[ImGuiKey_Insert]     = CB_KEY_INSERT;
+		io.KeyMap[ImGuiKey_Delete]     = CB_KEY_DELETE;
+		io.KeyMap[ImGuiKey_Backspace]  = CB_KEY_BACKSPACE;
+		io.KeyMap[ImGuiKey_Space]      = CB_KEY_SPACE;
+		io.KeyMap[ImGuiKey_Enter]      = CB_KEY_ENTER;
+		io.KeyMap[ImGuiKey_Escape]     = CB_KEY_ESCAPE;
 
-		io.KeyMap[ImGuiKey_A] = GLFW_KEY_A;
-		io.KeyMap[ImGuiKey_C] = GLFW_KEY_C;
-		io.KeyMap[ImGuiKey_V] = GLFW_KEY_V;
-		io.KeyMap[ImGuiKey_X] = GLFW_KEY_X;
-		io.KeyMap[ImGuiKey_Y] = GLFW_KEY_Y;
-		io.KeyMap[ImGuiKey_Z] = GLFW_KEY_Z;
+		io.KeyMap[ImGuiKey_A] = CB_KEY_A;
+		io.KeyMap[ImGuiKey_C] = CB_KEY_C;
+		io.KeyMap[ImGuiKey_V] = CB_KEY_V;
+		io.KeyMap[ImGuiKey_X] = CB_KEY_X;
+		io.KeyMap[ImGuiKey_Y] = CB_KEY_Y;
+		io.KeyMap[ImGuiKey_Z] = CB_KEY_Z;
 
 		ImGui_ImplOpenGL3_Init("#version 460");
     }
@@ -82,7 +83,6 @@ namespace CylinderBank
     
     void LayerImGUI::on_event(Event &t_event) 
     {
-        // Log::core_trace("ImGUI {0}", t_event);
 		EventDispatcher dispatcher(t_event);
 
 		dispatcher.dispatch<EventMouseButtonPressed>(
@@ -141,14 +141,14 @@ namespace CylinderBank
         ImGuiIO &io = ImGui::GetIO();
 		io.KeysDown[t_event.get_keycode()] = true;
 
-        io.KeyCtrl  = io.KeysDown[GLFW_KEY_LEFT_CONTROL] ||
-                      io.KeysDown[GLFW_KEY_RIGHT_CONTROL];
-        io.KeyAlt   = io.KeysDown[GLFW_KEY_LEFT_ALT] ||
-                      io.KeysDown[GLFW_KEY_RIGHT_ALT];
-        io.KeyShift = io.KeysDown[GLFW_KEY_LEFT_SHIFT] ||
-                      io.KeysDown[GLFW_KEY_RIGHT_SHIFT];
-        io.KeySuper = io.KeysDown[GLFW_KEY_LEFT_SUPER] ||
-                      io.KeysDown[GLFW_KEY_RIGHT_SUPER];
+        io.KeyCtrl  = io.KeysDown[CB_KEY_LEFT_CONTROL] ||
+                      io.KeysDown[CB_KEY_RIGHT_CONTROL];
+        io.KeyAlt   = io.KeysDown[CB_KEY_LEFT_ALT] ||
+                      io.KeysDown[CB_KEY_RIGHT_ALT];
+        io.KeyShift = io.KeysDown[CB_KEY_LEFT_SHIFT] ||
+                      io.KeysDown[CB_KEY_RIGHT_SHIFT];
+        io.KeySuper = io.KeysDown[CB_KEY_LEFT_SUPER] ||
+                      io.KeysDown[CB_KEY_RIGHT_SUPER];
 
 		return false;
     }
