@@ -11,8 +11,8 @@ find_package(Threads REQUIRED)
 find_package(OpenGL  REQUIRED)
 
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
-    set(Fullbeard_DIR ${PROJECT_SOURCE_DIR}/../Fullbeard/)
-    find_package(Fullbeard REQUIRED)
+    set(CylinderBank_DIR ${PROJECT_SOURCE_DIR}/../CylinderBank/)
+    find_package(CylinderBank REQUIRED)
 
     add_subdirectory(src)
 endif()

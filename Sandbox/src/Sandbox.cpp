@@ -1,8 +1,8 @@
-#include <Fullbeard/fullbeard.hpp>
+#include <CylinderBank/CylinderBank.hpp>
 
 #include <iostream>
 
-class Sandbox : public Fullbeard::Application
+class Sandbox : public CylinderBank::Application
 {
     public:
         Sandbox();
@@ -11,7 +11,7 @@ class Sandbox : public Fullbeard::Application
 
 Sandbox::Sandbox()
 {
-    push_overlay(new Fullbeard::LayerImGUI());
+    push_overlay(new CylinderBank::LayerImGUI());
 }
 
 Sandbox::~Sandbox()
@@ -19,7 +19,7 @@ Sandbox::~Sandbox()
 
 int main()
 {
-    Fullbeard::Log::init();
+    CylinderBank::Log::init();
 
     Sandbox *application = new Sandbox();
     application->run();

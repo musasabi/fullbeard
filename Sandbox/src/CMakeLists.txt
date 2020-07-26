@@ -19,5 +19,5 @@ set_target_properties(
 
 target_link_libraries(
     Sandbox
-    Fullbeard
+    CylinderBank
 )
