@@ -1,11 +1,12 @@
 file(
-    GLOB cpp_source
-    "*.cpp"
+    GLOB_RECURSE library_source
+    ${PROJECT_SOURCE_DIR}/src/*.cpp
+    ${PROJECT_SOURCE_DIR}/include/*.hpp
 )
 
 add_library(
     CylinderBank STATIC
-    ${cpp_source}
+    ${library_source}
 )
 
 target_precompile_headers(

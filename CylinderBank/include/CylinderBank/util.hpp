@@ -4,19 +4,19 @@
 #include <csignal>
 
 // a macro to ensure you meant to leave out that variable
-#define UNUSED__(x) (void) (x)
+#define CB_UNUSED(x) (void) (x)
 
 // slightly less verbose function binds
-#define BIND_EVENT_FN__(fn) std::bind(&fn, this, std::placeholders::_1)
+#define CB_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
 
-#define ASSERT_CORE__(x, ...) \
+#define CB_ASSERT_CORE(x, ...) \
 { if(!(x)) \
     { \
         Log::core_error("Assertion Failed: {0}", __VA_ARGS__); \
         std::raise(SIGTRAP); \
 } }
 
-#define ASSERT__(x, ...) \
+#define CB_ASSERT(x, ...) \
 { if(!(x)) \
     { \
         Log::error("Assertion Failed: {0}", __VA_ARGS__); \

@@ -24,6 +24,6 @@ namespace CylinderBank
 
     void Layer::on_event(Event &t_event)
     {
-        UNUSED__(t_event);
+        CB_UNUSED(t_event);
     }
 }

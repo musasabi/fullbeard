@@ -12,11 +12,11 @@ namespace CylinderBank
 
     Application::Application()
     {
-        ASSERT_CORE__(instance == nullptr,
+        CB_ASSERT_CORE(instance == nullptr,
                       "Only one application instance allowed.");
         instance = this;
         window = std::unique_ptr<Window>(Window::create());
-        window->set_event_callback(BIND_EVENT_FN__(Application::on_event));
+        window->set_event_callback(CB_BIND_EVENT_FN(Application::on_event));
     }
 
     Application::~Application()
@@ -47,7 +47,7 @@ namespace CylinderBank
         // Log::core_trace("Application {0}", t_event);
         EventDispatcher dispatcher(t_event);
         dispatcher.dispatch<EventWindowClose>(
-            BIND_EVENT_FN__(Application::on_window_close));
+            CB_BIND_EVENT_FN(Application::on_window_close));
 
         for(rev_layer_iter layer = layer_stack.rbegin();
             layer != layer_stack.rend();
@@ -76,7 +76,7 @@ namespace CylinderBank
 
     bool Application::on_window_close(EventWindowClose &t_event)
     {
-        UNUSED__(t_event);
+        CB_UNUSED(t_event);
         running = false;
         return true;
     }

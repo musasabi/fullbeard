@@ -46,7 +46,7 @@ namespace CylinderBank
         if(!glfw_initialized)
         {
             int result = glfwInit();
-            ASSERT_CORE__(result, "Could not initialize GLFW");
+            CB_ASSERT_CORE(result, "Could not initialize GLFW");
             glfw_initialized = true;
 
             glfwSetErrorCallback(glfwErrorCallback);
@@ -61,7 +61,7 @@ namespace CylinderBank
         if(!glad_initialized)
         {
             int result = gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
-            ASSERT_CORE__(result, "Could not initialize glad");
+            CB_ASSERT_CORE(result, "Could not initialize glad");
             glad_initialized = true;
         }
 
@@ -94,8 +94,8 @@ namespace CylinderBank
                                       int key, int scancode,
                                       int action, int mods)
         {
-            UNUSED__(scancode);
-            UNUSED__(mods);
+            CB_UNUSED(scancode);
+            CB_UNUSED(mods);
 
             WindowData *data =
                 (WindowData *) glfwGetWindowUserPointer(t_window);
@@ -137,7 +137,7 @@ namespace CylinderBank
         glfwSetMouseButtonCallback(window, [](GLFWwindow *t_window,
                                               int key, int action, int mods)
         {
-            UNUSED__(mods);
+            CB_UNUSED(mods);
 
             WindowData *data =
                 (WindowData *) glfwGetWindowUserPointer(t_window);

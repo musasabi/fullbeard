@@ -86,21 +86,21 @@ namespace CylinderBank
 		EventDispatcher dispatcher(t_event);
 
 		dispatcher.dispatch<EventMouseButtonPressed>(
-            BIND_EVENT_FN__(LayerImGUI::on_mouse_button_pressed));
+            CB_BIND_EVENT_FN(LayerImGUI::on_mouse_button_pressed));
 		dispatcher.dispatch<EventMouseButtonReleased>(
-            BIND_EVENT_FN__(LayerImGUI::on_mouse_button_released));
+            CB_BIND_EVENT_FN(LayerImGUI::on_mouse_button_released));
 		dispatcher.dispatch<EventMouseMoved>(
-            BIND_EVENT_FN__(LayerImGUI::on_mouse_moved));
+            CB_BIND_EVENT_FN(LayerImGUI::on_mouse_moved));
 		dispatcher.dispatch<EventMousewheelScrolled>(
-            BIND_EVENT_FN__(LayerImGUI::on_mousewheel_scrolled));
+            CB_BIND_EVENT_FN(LayerImGUI::on_mousewheel_scrolled));
 		dispatcher.dispatch<EventKeyPressed>(
-            BIND_EVENT_FN__(LayerImGUI::on_key_pressed));
+            CB_BIND_EVENT_FN(LayerImGUI::on_key_pressed));
 		dispatcher.dispatch<EventKeyReleased>(
-            BIND_EVENT_FN__(LayerImGUI::on_key_released));
+            CB_BIND_EVENT_FN(LayerImGUI::on_key_released));
 		dispatcher.dispatch<EventKeyTyped>(
-            BIND_EVENT_FN__(LayerImGUI::on_key_typed));
+            CB_BIND_EVENT_FN(LayerImGUI::on_key_typed));
 		dispatcher.dispatch<EventWindowResize>(
-            BIND_EVENT_FN__(LayerImGUI::on_window_resized));
+            CB_BIND_EVENT_FN(LayerImGUI::on_window_resized));
     }
     
     bool LayerImGUI::on_mouse_button_pressed(EventMouseButtonPressed &t_event) 
