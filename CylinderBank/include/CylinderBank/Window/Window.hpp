@@ -30,6 +30,7 @@ namespace CylinderBank
             virtual uint16_t get_width()  const = 0;
             virtual uint16_t get_height() const = 0;
             virtual bool     get_vsync()  const = 0;
+            virtual void *   get_native_window() const = 0;
 
             virtual void set_vsync(const bool t_enabled) = 0;
             virtual void set_event_callback(

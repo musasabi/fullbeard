@@ -37,6 +37,11 @@ namespace CylinderBank
                 return data.vsync;
             };
 
+            inline virtual void * get_native_window() const override
+            {
+                return (void *) window;
+            }
+
             void virtual set_vsync(const bool t_enabled) override;
 
             inline virtual void set_event_callback(

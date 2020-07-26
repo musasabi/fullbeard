@@ -1,6 +1,7 @@
 #include "CylinderBank/Systems/Application.hpp"
 
 #include "CylinderBank/util.hpp"
+#include "CylinderBank/Input/Input.hpp"
 
 #include <GLFW/glfw3.h>
 
@@ -26,8 +27,6 @@ namespace CylinderBank
     {
         running = true;
 
-        // GLfloat background_color[] = { 0.2f, 0.3f, 0.3f, 1.0f };
-
         while(running)
         {
             glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -37,6 +36,9 @@ namespace CylinderBank
             {
                 layer->on_update();
             }
+
+            auto [mouse_x, mouse_y] = Input::get_mouse_position();
+            Log::core_trace("{0}, {1}", mouse_x, mouse_y);
 
             window->on_update();
         }
