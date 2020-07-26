@@ -12,11 +12,12 @@ find_package(OpenGL  REQUIRED)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
 
-find_package(glad    REQUIRED)
-find_package(glfw3   REQUIRED)
-find_package(fmt     REQUIRED)
-find_package(spdlog  REQUIRED)
-find_package(imgui   REQUIRED)
+find_package(glad   REQUIRED)
+find_package(glfw3  REQUIRED)
+find_package(fmt    REQUIRED)
+find_package(spdlog REQUIRED)
+find_package(imgui  REQUIRED)
+find_package(glm    REQUIRED)
 
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
     add_subdirectory(src)
@@ -35,9 +36,12 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
         list(APPEND EXPORT_LIBS "spdlog")
     endif()
 
-
     if(NOT EXISTS ${imgui_INCLUDE_DIR})
         list(APPEND EXPORT_LIBS "imgui")
+    endif()
+
+    if(NOT EXISTS ${glm_INCLUDE_DIR})
+        list(APPEND EXPORT_LIBS "glm")
     endif()
 
     export(

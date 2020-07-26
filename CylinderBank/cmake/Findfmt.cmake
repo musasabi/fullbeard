@@ -18,11 +18,7 @@ if(EXISTS ${fmt_INCLUDE_DIR})
     )
 endif()
 
-if(fmt_FOUND)
-    set(fmt_INCLUDE_DIRS ${fmt_INCLUDE_DIR} )
-    set(fmt_LIBRARIES ${fmt_LIBRARY} )
-
-else()
+if(NOT fmt_FOUND)
     message(STATUS "Pulling in external fmt library")
 
     include(FetchContent)

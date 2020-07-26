@@ -19,6 +19,7 @@ target_include_directories(
     ${PROJECT_SOURCE_DIR}/include
     ${imgui_SOURCE_DIR}
     ${imgui_SOURCE_DIR}/examples
+    ${glm_INCLUDE_DIR}
 )
 
 target_link_libraries(

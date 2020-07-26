@@ -18,11 +18,7 @@ if(EXISTS ${glfw3_INCLUDE_DIR})
     )
 endif()
 
-if(glfw3_FOUND)
-    set(glfw3_INCLUDE_DIRS ${glfw3_INCLUDE_DIR} )
-    set(glfw3_LIBRARIES ${glfw3_LIBRARY} )
-
-else()
+if(NOT glfw3_FOUND)
     message(STATUS "Pulling in external GLFW")
 
     include(FetchContent)
