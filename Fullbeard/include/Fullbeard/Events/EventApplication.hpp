@@ -15,7 +15,7 @@ namespace Fullbeard
             inline uint16_t get_width()  const { return width;  }
             inline uint16_t get_height() const { return height; }
 
-            std::string to_string() const override;
+            virtual std::string to_string() const override;
             virtual int get_category_flags() const override;
 			virtual EventType get_event_type() const override;
             static  EventType get_static_type();
@@ -30,7 +30,7 @@ namespace Fullbeard
         public:
             EventWindowClose();
 
-            std::string to_string() const override;
+            virtual std::string to_string() const override;
             virtual int get_category_flags() const override;
 			virtual EventType get_event_type() const override;
             static  EventType get_static_type();

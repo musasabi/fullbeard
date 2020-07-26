@@ -24,19 +24,28 @@ namespace Fullbeard
             WindowLinux(const WindowProperties &t_properties);
             virtual ~WindowLinux();
 
-            inline uint16_t get_width()  const override { return data.width;  };
-            inline uint16_t get_height() const override { return data.height; };
-            inline bool     get_vsync()  const override { return data.vsync;  };
+            inline virtual uint16_t get_width() const override
+            {
+                return data.width;
+            };
+            inline virtual uint16_t get_height() const override
+            {
+                return data.height;
+            };
+            inline virtual bool get_vsync() const override
+            {
+                return data.vsync;
+            };
 
-            void set_vsync(const bool t_enabled) override;
+            void virtual set_vsync(const bool t_enabled) override;
 
-            inline void set_event_callback(
+            inline virtual void set_event_callback(
                 const std::function<void(Event &)> t_callback) override
                 {
                     data.event_callback = t_callback;
                 }
 
-            void on_update() override;
+            void virtual on_update() override;
 
         private:
             GLFWwindow *window;

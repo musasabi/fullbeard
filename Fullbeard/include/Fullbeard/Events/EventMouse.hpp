@@ -15,7 +15,7 @@ namespace Fullbeard
             inline float get_x() const { return x_position; }
             inline float get_y() const { return y_position; }
 
-            std::string to_string() const override;
+            virtual std::string to_string() const override;
             virtual int get_category_flags() const override;
 			virtual EventType get_event_type() const override;
             static  EventType get_static_type();
@@ -34,7 +34,7 @@ namespace Fullbeard
             inline float get_x_offset() const { return x_offset; }
             inline float get_y_offset() const { return y_offset; }
 
-            std::string to_string() const override;
+            virtual std::string to_string() const override;
             virtual int get_category_flags() const override;
 			virtual EventType get_event_type() const override;
             static  EventType get_static_type();
@@ -63,7 +63,7 @@ namespace Fullbeard
 
             inline bool is_repeated() const { return repeated; }
 
-            std::string to_string() const override;
+            virtual std::string to_string() const override;
             virtual EventType get_event_type()  const override;
             static  EventType get_static_type();
 
@@ -76,7 +76,7 @@ namespace Fullbeard
         public:
             EventMouseButtonReleased(const uint16_t t_keycode);
 
-            std::string to_string() const override;
+            virtual std::string to_string() const override;
             virtual EventType get_event_type()  const override;
             static  EventType get_static_type();
     };

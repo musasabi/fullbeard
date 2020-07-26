@@ -20,7 +20,7 @@ namespace Fullbeard
             void push_layer(Layer *t_layer);
             void push_overlay(Layer *t_overlay);
 
-            inline Window & get_window() { return *window; }
+            inline Window & get_window() const { return *window; }
             inline static Application & get_instance() { return *instance; }
 
         private:

@@ -14,10 +14,10 @@ namespace Fullbeard
             LayerImGUI();
             ~LayerImGUI();
 
-            void on_push() override;
-            void on_pop() override;
-            void on_update() override;
-            void on_event(Event &t_event) override;
+            virtual void on_push() override;
+            virtual void on_pop() override;
+            virtual void on_update() override;
+            virtual void on_event(Event &t_event) override;
 
         private:
             bool on_mouse_button_pressed(EventMouseButtonPressed &t_event);

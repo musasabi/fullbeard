@@ -25,7 +25,7 @@ namespace Fullbeard
 
             inline bool is_repeated() const { return repeated; }
 
-            std::string to_string() const override;
+            virtual std::string to_string() const override;
             virtual EventType get_event_type()  const override;
             static  EventType get_static_type();
 
@@ -38,7 +38,7 @@ namespace Fullbeard
         public:
             EventKeyReleased(const uint16_t t_keycode);
 
-            std::string to_string() const override;
+            virtual std::string to_string() const override;
             virtual EventType get_event_type()  const override;
             static  EventType get_static_type();
     };
@@ -48,7 +48,7 @@ namespace Fullbeard
         public:
             EventKeyTyped(const uint16_t t_keycode);
 
-            std::string to_string() const override;
+            virtual std::string to_string() const override;
             virtual EventType get_event_type()  const override;
             static  EventType get_static_type();
     };
