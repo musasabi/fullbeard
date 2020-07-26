@@ -16,7 +16,6 @@ target_precompile_headers(
 target_include_directories(
     CylinderBank PUBLIC
     ${PROJECT_SOURCE_DIR}/include
-    ${PROJECT_SOURCE_DIR}/vendor/include
     ${imgui_SOURCE_DIR}
     ${imgui_SOURCE_DIR}/examples
 )

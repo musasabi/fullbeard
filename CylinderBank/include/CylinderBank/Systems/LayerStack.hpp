@@ -1,7 +1,7 @@
 #ifndef CB_LAYERSTACK_HPP__
 #define CB_LAYERSTACK_HPP__
 
-#include "Layer.hpp"
+#include "../Layers/Layer.hpp"
 
 #include <vector>
 
