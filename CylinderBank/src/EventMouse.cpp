@@ -1,6 +1,6 @@
-#include "CylinderBank/Events/EventMouse.hpp"
-
 #include "CylinderBank_pch.hpp"
+
+#include "CylinderBank/Events/EventMouse.hpp"
 
 namespace CylinderBank
 {

@@ -1,11 +1,11 @@
+#include "CylinderBank_pch.hpp"
+
 #include "CylinderBank/Systems/Application.hpp"
 
 #include "CylinderBank/util.hpp"
 #include "CylinderBank/Input/Input.hpp"
 
 #include <GLFW/glfw3.h>
-
-#include "CylinderBank_pch.hpp"
 
 namespace CylinderBank
 {
@@ -18,6 +18,9 @@ namespace CylinderBank
         instance = this;
         window = std::unique_ptr<Window>(Window::create());
         window->set_event_callback(CB_BIND_EVENT_FN(Application::on_event));
+
+        layer_imgui = new LayerImGUI();
+        push_overlay(layer_imgui);
     }
 
     Application::~Application()
@@ -37,13 +40,20 @@ namespace CylinderBank
                 layer->on_update();
             }
 
+            // why are we going through the whole layer stack twice?
+            layer_imgui->begin_render();
+            for(Layer *layer : layer_stack)
+            {
+                layer->imgui_draw();
+            }
+            layer_imgui->complete_render();
+
             window->on_update();
         }
     }
 
     void Application::on_event(Event &t_event)
     {
-        // Log::core_trace("Application {0}", t_event);
         EventDispatcher dispatcher(t_event);
         dispatcher.dispatch<EventWindowClose>(
             CB_BIND_EVENT_FN(Application::on_window_close));

@@ -4,6 +4,7 @@
 #include "../Events/EventApplication.hpp"
 #include "../Window/Window.hpp"
 #include "../Systems/LayerStack.hpp"
+#include "../Layers/LayerImGUI.hpp"
 
 namespace CylinderBank
 {
@@ -26,9 +27,10 @@ namespace CylinderBank
         private:
             bool on_window_close(EventWindowClose &t_event);
 
-            std::unique_ptr<Window> window;
             static Application *instance;
+            std::unique_ptr<Window> window;
             LayerStack layer_stack;
+            LayerImGUI *layer_imgui;
 
             bool running = false;
     };

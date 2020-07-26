@@ -31,7 +31,7 @@ namespace CylinderBank
 
         private:
             std::vector<Layer *> layers;
-            std::vector<Layer *>::iterator layer_insert;
+            uint32_t layer_insert_pos;
     };
 }
 

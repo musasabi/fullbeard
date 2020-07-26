@@ -1,11 +1,11 @@
+#include "CylinderBank_pch.hpp"
+
 #include "CylinderBank/Input/InputLinux.hpp"
 
 #include "CylinderBank/Systems/Application.hpp"
 #include "CylinderBank/util.hpp"
 
 #include <GLFW/glfw3.h>
-
-#include "CylinderBank_pch.hpp"
 
 namespace CylinderBank
 {

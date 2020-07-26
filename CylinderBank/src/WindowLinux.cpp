@@ -1,3 +1,5 @@
+#include "CylinderBank_pch.hpp"
+
 #include "CylinderBank/Window/WindowLinux.hpp"
 
 #include "CylinderBank/Events/EventApplication.hpp"
@@ -6,8 +8,6 @@
 #include "CylinderBank/util.hpp"
 
 #include <glad/glad.h>
-
-#include "CylinderBank_pch.hpp"
 
 namespace CylinderBank
 {

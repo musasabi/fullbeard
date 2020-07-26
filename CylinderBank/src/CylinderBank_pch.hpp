@@ -1,6 +1,7 @@
 #ifndef CB_PCH_HPP__
 #define CB_PCH_HPP__
 
+// C++ standard libraries of interest
 #include <cstdint>
 #include <utility>
 
@@ -17,6 +18,8 @@
 
 #include <vector>
 
+
+// CylinderBank libraries of interest
 #include "CylinderBank/Systems/Log.hpp"
 
 #endif //CB_PCH_HPP__
