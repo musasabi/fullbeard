@@ -9,6 +9,9 @@ Sandbox/Sandbox
 *.code-workspace
 .history/
 
+.vs/
+CMakeSettings.json
+
 
 build
 **/*Config.cmake
@@ -41,3 +44,5 @@ _deps
 *.exe
 *.out
 *.app
+*.pdb
+*.ilk

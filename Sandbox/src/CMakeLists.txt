@@ -3,11 +3,20 @@ add_executable(
     Sandbox.cpp
 )
 
-target_compile_options(
-    Sandbox PRIVATE
-    -Werror -Wall -Wextra -Wconversion -Wsign-conversion -pedantic-errors
-    -fdiagnostics-color=always
-)
+if(UNIX)
+    target_compile_options(
+        Sandbox PRIVATE
+        -Werror -Wall -Wextra -Wconversion -Wsign-conversion -pedantic-errors
+        -fdiagnostics-color=always
+    )
+endif()
+
+if(WIN32)
+    target_compile_options(
+        Sandbox PRIVATE
+        /W4
+    )
+endif()
 
 set_target_properties(
     Sandbox PROPERTIES

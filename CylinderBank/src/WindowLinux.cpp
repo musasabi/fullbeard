@@ -125,7 +125,7 @@ namespace CylinderBank
             }
         });
 
-        glfwSetCharCallback(window, [](GLFWwindow *t_window, uint t_keycode)
+        glfwSetCharCallback(window, [](GLFWwindow *t_window, unsigned int t_keycode)
         {
             WindowData *data =
                 (WindowData *) glfwGetWindowUserPointer(t_window);

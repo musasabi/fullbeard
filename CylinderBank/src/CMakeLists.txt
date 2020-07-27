@@ -19,7 +19,7 @@ target_include_directories(
     ${PROJECT_SOURCE_DIR}/include
     ${imgui_SOURCE_DIR}
     ${imgui_SOURCE_DIR}/examples
-    ${glm_INCLUDE_DIR}
+    ${glm_SOURCE_DIR}
 )
 
 target_link_libraries(
@@ -38,11 +38,20 @@ target_compile_definitions(
     SPDLOG_FMT_EXTERNAL
 )
 
-target_compile_options(
-    CylinderBank PRIVATE
-    -Werror -Wall -Wextra -Wconversion -Wsign-conversion -pedantic-errors
-    -fdiagnostics-color=always
-)
+if(UNIX)
+    target_compile_options(
+        CylinderBank PRIVATE
+        -Werror -Wall -Wextra -Wconversion -Wsign-conversion -pedantic-errors
+        -fdiagnostics-color=always
+    )
+endif()
+
+if(MSVC)
+    target_compile_options(
+        CylinderBank PRIVATE
+        /W4
+    )
+endif()
 
 set_target_properties(
     CylinderBank PROPERTIES
