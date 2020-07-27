@@ -1,7 +1,7 @@
 file(
     GLOB_RECURSE library_source
-    ${PROJECT_SOURCE_DIR}/src/*.cpp
-    ${PROJECT_SOURCE_DIR}/include/*.hpp
+    "${CMAKE_CURRENT_SOURCE_DIR}/../*.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../*.hpp"
 )
 
 add_library(
@@ -16,7 +16,7 @@ target_precompile_headers(
 
 target_include_directories(
     CylinderBank PUBLIC
-    ${PROJECT_SOURCE_DIR}/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/../include
     ${imgui_SOURCE_DIR}
     ${imgui_SOURCE_DIR}/examples
     ${glm_SOURCE_DIR}
@@ -58,6 +58,6 @@ set_target_properties(
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED on
     CXX_EXTENSIONS off
-    LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib/CylinderBank
-    ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib/CylinderBank
+    LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib/CylinderBank
+    ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib/CylinderBank
 )
