@@ -11,6 +11,7 @@ Sandbox/Sandbox
 
 .vs/
 CMakeSettings.json
+out/
 
 
 build
