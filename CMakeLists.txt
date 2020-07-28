@@ -1,8 +1,10 @@
 cmake_minimum_required(VERSION 3.16)
 
 project(
-    CylinderBankDev
-    DESCRIPTION "The project which includes both the CylinderBank library as well as the Sandbox app"
+    CylinderBank
+    VERSION "0.1.0"
+    DESCRIPTION "CylinderBank is a game eninge project based on the Hazel \
+                 engine YouTube series by TheCherno."
 )
 
 add_subdirectory(CylinderBank)
