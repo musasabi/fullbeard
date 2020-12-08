@@ -26,6 +26,8 @@ namespace CylinderBank
     {
     }
 
+//TODO test ImGui docking/etc on Windows, too
+
     void LayerImGUI::on_push() 
     {
         IMGUI_CHECKVERSION();
