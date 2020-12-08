@@ -20,8 +20,8 @@ add_library(
     ${imgui_SOURCE_DIR}/imgui_demo.cpp
     ${imgui_SOURCE_DIR}/imgui_draw.cpp
     ${imgui_SOURCE_DIR}/imgui_widgets.cpp
-    ${imgui_SOURCE_DIR}/examples/imgui_impl_glfw.cpp
-    ${imgui_SOURCE_DIR}/examples/imgui_impl_opengl3.cpp
+    ${imgui_SOURCE_DIR}/backends/imgui_impl_glfw.cpp
+    ${imgui_SOURCE_DIR}/backends/imgui_impl_opengl3.cpp
 )
 
 target_compile_options(
@@ -32,7 +32,7 @@ target_compile_options(
 target_include_directories(
     imgui PRIVATE
     ${imgui_SOURCE_DIR}
-    ${imgui_SOURCE_DIR}/examples
+    ${imgui_SOURCE_DIR}/backends
     ${glad_BINARY_DIR}/include # so imgui can find glad
 )
 
