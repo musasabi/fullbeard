@@ -18,7 +18,7 @@ target_include_directories(
     CylinderBank PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/../include
     ${imgui_SOURCE_DIR}
-    ${imgui_SOURCE_DIR}/examples
+    ${imgui_SOURCE_DIR}/backends
     ${glm_SOURCE_DIR}
 )
 
