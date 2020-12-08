@@ -10,8 +10,6 @@
 #include "CylinderBank/util.hpp"
 #include "CylinderBank/Input/keycodes.hpp"
 
-#include<GLFW/glfw3.h>
-
 namespace CylinderBank
 {
     LayerImGUI * LayerImGUI::instance = nullptr;
@@ -32,6 +30,16 @@ namespace CylinderBank
     {
         IMGUI_CHECKVERSION();
         ImGui::CreateContext();
+
+        ImGuiIO &io = ImGui::GetIO();
+        io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+        io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+        io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
+
+        ImGuiStyle &style = ImGui::GetStyle();
+        style.WindowRounding = 0.0f;
+        style.Colors[ImGuiCol_WindowBg].w = 1.0f;
+
         ImGui::StyleColorsDark();
 
         Application& app = Application::get_instance();
@@ -65,6 +73,11 @@ namespace CylinderBank
 
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+        backup_context = glfwGetCurrentContext();
+        ImGui::UpdatePlatformWindows();
+        ImGui::RenderPlatformWindowsDefault();
+        glfwMakeContextCurrent(backup_context);
     }
 
     void LayerImGUI::imgui_draw()
