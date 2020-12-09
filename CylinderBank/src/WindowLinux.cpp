@@ -19,21 +19,6 @@ namespace CylinderBank
 
     WindowLinux::WindowLinux(const WindowProperties &t_properties)
     {
-        init(t_properties);
-    }
-
-    WindowLinux::~WindowLinux()
-    {
-        shutdown();
-    }
-
-    Window * Window::create(const WindowProperties &t_properties)
-    {
-        return new WindowLinux(t_properties);
-    }
-
-    void WindowLinux::init(const WindowProperties &t_properties)
-    {
         data.title  = t_properties.title;
         data.width  = t_properties.width;
         data.height = t_properties.height;
@@ -173,6 +158,17 @@ namespace CylinderBank
         });
     }
 
+    WindowLinux::~WindowLinux()
+    {
+		glfwDestroyWindow(window);
+    }
+
+    Window * Window::create(const WindowProperties &t_properties)
+    {
+        return new WindowLinux(t_properties);
+    }
+
+
 	void WindowLinux::set_vsync(const bool t_enabled)
 	{
 		if (t_enabled)
@@ -191,6 +187,5 @@ namespace CylinderBank
 
 	void WindowLinux::shutdown()
 	{
-		glfwDestroyWindow(window);
 	}
 }

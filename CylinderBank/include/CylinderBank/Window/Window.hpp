@@ -23,8 +23,6 @@ namespace CylinderBank
     class Window
     {
         public:
-            virtual ~Window() { }
-
             virtual void on_update() = 0;
 
             virtual uint16_t get_width()  const = 0;
@@ -38,6 +36,9 @@ namespace CylinderBank
 
             static Window* create(const WindowProperties &t_properties =
                                     WindowProperties());
+                                    
+        protected:
+        	Window() = default;
     };
 }
 

@@ -22,6 +22,7 @@ namespace CylinderBank
     {
         public:
             EventKeyPressed(const uint16_t t_keycode, const bool t_repeated);
+        	~EventKeyPressed() = default;
 
             inline bool is_repeated() const { return repeated; }
 
@@ -37,6 +38,7 @@ namespace CylinderBank
     {
         public:
             EventKeyReleased(const uint16_t t_keycode);
+        	~EventKeyReleased() = default;
 
             virtual std::string to_string() const override;
             virtual EventType get_event_type()  const override;
@@ -47,6 +49,7 @@ namespace CylinderBank
     {
         public:
             EventKeyTyped(const uint16_t t_keycode);
+        	~EventKeyTyped() = default;
 
             virtual std::string to_string() const override;
             virtual EventType get_event_type()  const override;

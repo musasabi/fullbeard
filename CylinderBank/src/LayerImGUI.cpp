@@ -15,15 +15,11 @@ namespace CylinderBank
     LayerImGUI * LayerImGUI::instance = nullptr;
 
     LayerImGUI::LayerImGUI() :
-    Layer("ImGUI Layer")
+        Layer("ImGUI Layer")
     {
         CB_ASSERT_CORE(instance == nullptr,
                        "There may only be one ImGUI layer.");
         instance = this;
-    }
-
-    LayerImGUI::~LayerImGUI() 
-    {
     }
 
 //TODO test ImGui docking/etc on Windows, too

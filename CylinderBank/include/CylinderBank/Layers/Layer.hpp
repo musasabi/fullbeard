@@ -12,12 +12,13 @@ namespace CylinderBank
     {
         public:
             Layer(const std::string &t_name = "Layer"):
-            debug_name(t_name)
+                debug_name(t_name)
             { }
-            virtual ~Layer() { }
+            
+            virtual ~Layer() = default;
 
-            virtual void on_push() { };
-            virtual void on_pop() { };
+            virtual void on_push()   { };
+            virtual void on_pop()    { };
             virtual void on_update() { };
 
             virtual void on_event(Event &t_event)

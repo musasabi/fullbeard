@@ -10,7 +10,8 @@ namespace CylinderBank
     class Log
     {
         public:
-            Log() {}
+            Log() = default;
+            
             static void init();
 
             template<typename Fmt, typename ...Args>

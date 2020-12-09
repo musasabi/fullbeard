@@ -17,6 +17,12 @@ namespace CylinderBank
             LayerStack();
             ~LayerStack();
 
+            LayerStack(const LayerStack &) = default;
+            LayerStack(LayerStack &&)      = default;
+
+            LayerStack& operator=(const LayerStack &) = default;
+            LayerStack& operator=(LayerStack &&)      = default;
+
             void push_layer(Layer *layer);
             void pop_layer(Layer  *layer);
 

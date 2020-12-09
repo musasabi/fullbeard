@@ -12,7 +12,6 @@ namespace CylinderBank
     {
         public:
             ContextOpenGL(GLFWwindow *t_window_handle);
-            ~ContextOpenGL() = default;
 
             void init() override;
             void swap_buffers() override;

@@ -22,7 +22,13 @@ namespace CylinderBank
     {
         public:
             WindowLinux(const WindowProperties &t_properties);
-            virtual ~WindowLinux();
+            ~WindowLinux();
+            
+            WindowLinux(const WindowLinux &) = default;
+            WindowLinux(WindowLinux &&)      = default;
+            
+            WindowLinux& operator=(const WindowLinux &) = default;
+            WindowLinux& operator=(WindowLinux &&)      = default;
 
             inline virtual uint16_t get_width() const override
             {
@@ -58,8 +64,8 @@ namespace CylinderBank
 
             Context *rendering_context;
 
-            virtual void init(const WindowProperties &t_properties);
-            virtual void shutdown();
+            void init(const WindowProperties &t_properties);
+            void shutdown();
     };
 }
 

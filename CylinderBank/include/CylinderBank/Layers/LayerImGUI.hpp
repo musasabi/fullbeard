@@ -14,7 +14,6 @@ namespace CylinderBank
     {
         public:
             LayerImGUI();
-            ~LayerImGUI();
 
             virtual void on_push() override;
             virtual void on_pop() override;

@@ -38,9 +38,6 @@ namespace CylinderBank
 //##############################################################################
 // class CylinderBank::EventWindowClose
 
-    EventWindowClose::EventWindowClose()
-    { }
-
     std::string EventWindowClose::to_string() const
     {
         return "Window closed.";
@@ -64,9 +61,6 @@ namespace CylinderBank
 //##############################################################################
 // class CylinderBank::EventApplicationTick
 
-    EventApplicationTick::EventApplicationTick()
-    { }
-
     int EventApplicationTick::get_category_flags() const
     {
         return EventCategoryApplication;
@@ -85,9 +79,6 @@ namespace CylinderBank
 //##############################################################################
 // class CylinderBank::EventApplicationUpdate
 
-    EventApplicationUpdate::EventApplicationUpdate()
-    { }
-
     int EventApplicationUpdate::get_category_flags() const
     {
         return EventCategoryApplication;
@@ -105,9 +96,6 @@ namespace CylinderBank
 
 //##############################################################################
 // class CylinderBank::EventApplicationRender
-
-    EventApplicationRender::EventApplicationRender()
-    { }
 
     int EventApplicationRender::get_category_flags() const
     {
