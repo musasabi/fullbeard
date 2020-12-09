@@ -3,7 +3,6 @@
 
 // to overload << for the purposes of logging
 #include <fmt/ostream.h>
-
 #include <string>
 #include <functional>
 
@@ -46,12 +45,6 @@ namespace CylinderBank
             bool handled = false;
     };
 
-    inline std::ostream& operator<<(std::ostream& t_ostream,
-                                    const Event& t_event)
-    {
-        return t_ostream << t_event.to_string();
-    }
-
     class EventDispatcher
     {
         public:
@@ -59,11 +52,11 @@ namespace CylinderBank
                 event(t_event) { }
 
             template<typename T>
-            bool dispatch(std::function<bool(T&)> t_func)
+            bool dispatch(std::function<bool(T&)> func)
             {
                 if(event.get_event_type() == T::get_static_type())
                 {
-                    event.handled = t_func(*(T*) &event);
+                    event.handled = func(*(T*) &event);
                     return true;
                 }
 
@@ -73,5 +66,11 @@ namespace CylinderBank
         private:
             Event& event;
     };
+
+    inline std::ostream& operator<<(std::ostream& t_ostream,
+                                    const Event& t_event)
+    {
+        return t_ostream << t_event.to_string();
+    }
 }
 #endif // CB_EVENT_HPP__
