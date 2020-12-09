@@ -6,6 +6,8 @@
 #include "../Systems/LayerStack.hpp"
 #include "../Layers/LayerImGUI.hpp"
 
+#include "GLFW/glfw3.h"
+
 namespace CylinderBank
 {
     class Application
@@ -33,6 +35,10 @@ namespace CylinderBank
             LayerImGUI *layer_imgui;
 
             bool running = false;
+
+            GLuint vertex_array;
+            GLuint vertex_buffer;
+            GLuint index_buffer;
     };
 }
 

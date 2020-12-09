@@ -2,17 +2,15 @@
 
 #include "CylinderBank/Window/WindowLinux.hpp"
 
+#include "CylinderBank/util.hpp"
 #include "CylinderBank/Events/EventApplication.hpp"
 #include "CylinderBank/Events/EventMouse.hpp"
 #include "CylinderBank/Events/EventKey.hpp"
-#include "CylinderBank/util.hpp"
-
-#include <glad/glad.h>
+#include "CylinderBank/Renderer/ContextOpenGL.hpp"
 
 namespace CylinderBank
 {
     static bool glfw_initialized = false;
-    static bool glad_initialized = false;
 
     static void glfwErrorCallback(int t_error, const char* t_message)
     {
@@ -54,20 +52,12 @@ namespace CylinderBank
 
         window = glfwCreateWindow((int) data.width, (int) data.height,
                                   data.title.c_str(), nullptr, nullptr);
-        glfwMakeContextCurrent(window);
+
+        rendering_context = new ContextOpenGL(window);
+        rendering_context->init();
+
         glfwSetWindowUserPointer(window, &data);
         set_vsync(true);
-
-        if(!glad_initialized)
-        {
-            int result = gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
-            CB_ASSERT_CORE(result, "Could not initialize glad");
-            glad_initialized = true;
-        }
-
-        Log::core_info("OpenGL v{0}.{1}", GLVersion.major, GLVersion.minor);
-        Log::core_info("Renderer: {0}", glGetString(GL_RENDERER));
-        Log::core_info("Windowing: GLFW v{0}", glfwGetVersionString());
 
         glfwSetWindowSizeCallback(window, [](GLFWwindow *t_window,
                                              int t_height, int t_width)

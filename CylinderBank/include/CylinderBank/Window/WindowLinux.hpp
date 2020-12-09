@@ -2,9 +2,9 @@
 #define CB_WINDOW_LINUX_HPP__
 
 #include "Window.hpp"
+#include "../Renderer/Context.hpp"
 
-#include "glad/glad.h"
-#include <GLFW/glfw3.h>
+#include "GLFW/glfw3.h"
 
 namespace CylinderBank
 {
@@ -55,6 +55,8 @@ namespace CylinderBank
         private:
             GLFWwindow *window;
             WindowData data;
+
+            Context *rendering_context;
 
             virtual void init(const WindowProperties &t_properties);
             virtual void shutdown();

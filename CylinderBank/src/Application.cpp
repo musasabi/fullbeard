@@ -1,11 +1,11 @@
 #include "CylinderBank_pch.hpp"
 
+#include "glad/glad.h"
+
 #include "CylinderBank/Systems/Application.hpp"
 
 #include "CylinderBank/util.hpp"
 #include "CylinderBank/Input/Input.hpp"
-
-#include <GLFW/glfw3.h>
 
 namespace CylinderBank
 {
@@ -21,6 +21,29 @@ namespace CylinderBank
 
         layer_imgui = new LayerImGUI();
         push_overlay(layer_imgui);
+
+		glGenVertexArrays(1, &vertex_array);
+		glBindVertexArray(vertex_array);
+
+		glGenBuffers(1, &vertex_buffer);
+		glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer);
+
+		float vertices[3 * 3] = {
+			-0.5f, -0.5f, 0.0f,
+			 0.5f, -0.5f, 0.0f,
+			 0.0f,  0.5f, 0.0f
+		};
+
+		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+		glEnableVertexAttribArray(0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+
+		glGenBuffers(1, &index_buffer);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, index_buffer);
+
+		unsigned int indices[3] = { 0, 1, 2 };
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
     }
 
     Application::~Application()
@@ -34,6 +57,9 @@ namespace CylinderBank
         {
             glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
+
+            glBindVertexArray(vertex_array);
+			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr);
 
             for(Layer *layer : layer_stack)
             {
