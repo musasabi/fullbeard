@@ -80,7 +80,7 @@ namespace CylinderBank
                 elements(t_elements),
                 stride(0)
             {
-                calc_offsets_and_stride();
+                calculate_offsets_and_stride();
             }
 
             std::size_t get_stride() const { return stride; }
@@ -93,9 +93,9 @@ namespace CylinderBank
             {
                 return elements.end();
             }
-        
+
         private:
-            void calc_offsets_and_stride()
+            void calculate_offsets_and_stride()
             {
                 std::size_t offset = 0;
                 stride = 0;
