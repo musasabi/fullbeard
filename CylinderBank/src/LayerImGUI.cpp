@@ -5,6 +5,7 @@
 #include "imgui.h"
 #include "imgui_impl_opengl3.h"
 #include "imgui_impl_glfw.h"
+#include "GLFW/glfw3.h"
 
 #include "CylinderBank/Systems/Application.hpp"
 #include "CylinderBank/util.hpp"
@@ -70,7 +71,7 @@ namespace CylinderBank
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
-        backup_context = glfwGetCurrentContext();
+        GLFWwindow *backup_context = glfwGetCurrentContext();
         ImGui::UpdatePlatformWindows();
         ImGui::RenderPlatformWindowsDefault();
         glfwMakeContextCurrent(backup_context);

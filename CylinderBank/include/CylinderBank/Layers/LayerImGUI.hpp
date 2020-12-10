@@ -6,8 +6,6 @@
 #include "../Events/EventKey.hpp"
 #include "../Events/EventApplication.hpp"
 
-#include"GLFW/glfw3.h"
-
 namespace CylinderBank
 {
     class LayerImGUI : public Layer
@@ -26,7 +24,6 @@ namespace CylinderBank
         private:
             static LayerImGUI *instance;
             float time = 0.0f;
-            GLFWwindow *backup_context;
     };
 }
 #endif // CB_LAYERIMGUI_HPP__

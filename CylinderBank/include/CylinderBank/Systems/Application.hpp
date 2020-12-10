@@ -5,6 +5,7 @@
 #include "../Window/Window.hpp"
 #include "../Systems/LayerStack.hpp"
 #include "../Layers/LayerImGUI.hpp"
+#include "../Renderer/Shader.hpp"
 
 #include "GLFW/glfw3.h"
 
@@ -39,6 +40,8 @@ namespace CylinderBank
             std::unique_ptr<Window> window;
             LayerStack layer_stack;
             LayerImGUI *layer_imgui;
+
+            std::unique_ptr<Shader> shader;
 
             bool running = false;
 

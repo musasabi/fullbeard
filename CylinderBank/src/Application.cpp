@@ -4,8 +4,8 @@
 
 #include "CylinderBank/Systems/Application.hpp"
 
-#include "CylinderBank/util.hpp"
 #include "CylinderBank/Input/Input.hpp"
+#include "CylinderBank/CylinderBank.hpp"
 
 namespace CylinderBank
 {
@@ -44,6 +44,33 @@ namespace CylinderBank
 
 		unsigned int indices[3] = { 0, 1, 2 };
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+        std::string vertex_source = R"(
+            #version 330 core
+
+            layout(location = 0) in vec3 a_position;
+            out vec4 v_position;
+
+            void main()
+            {
+                gl_Position = vec4(a_position, 1.0);
+                v_position  = vec4(a_position, 1.0);
+            }
+        )";
+
+        std::string fragment_source = R"(
+            #version 330 core
+
+            layout(location = 0) out vec4 color;
+            in vec4 v_position;
+
+            void main()
+            {
+                color = v_position;
+            }
+        )";
+
+        shader.reset(new Shader(vertex_source, fragment_source));
     }
 
     void Application::run()
@@ -54,6 +81,8 @@ namespace CylinderBank
         {
             glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
+
+            shader->bind();
 
             glBindVertexArray(vertex_array);
 			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr);
