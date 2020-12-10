@@ -13,14 +13,10 @@ namespace CylinderBank
     {
         switch(Renderer::GetAPI())
         {
-            case RendererAPI::None:
-                CB_ASSERT_CORE(false,
-                    "No Renderer API selected (vertex buffer).");
-                return nullptr;
-
             case RendererAPI::OpenGL:
                 return new VertexBufferOpenGL(t_vertices, t_size);
 
+            case RendererAPI::None:
             default:
                 CB_ASSERT_CORE(false, "Unknown Renderer API (vertex buffer).");
                 return nullptr;
@@ -32,14 +28,10 @@ namespace CylinderBank
     {
         switch(Renderer::GetAPI())
         {
-            case RendererAPI::None:
-                CB_ASSERT_CORE(false,
-                    "No Renderer API selected (index buffer).");
-                return nullptr;
-
             case RendererAPI::OpenGL:
                 return new IndexBufferOpenGL(t_vertices, t_count);
 
+            case RendererAPI::None:
             default:
                 CB_ASSERT_CORE(false, "Unknown Renderer API (index buffer).");
                 return nullptr;

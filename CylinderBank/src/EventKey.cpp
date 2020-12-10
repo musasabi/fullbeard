@@ -7,7 +7,7 @@ namespace CylinderBank
 //##############################################################################
 // class CylinderBank::EventKey
 
-    EventKey::EventKey(const uint16_t t_keycode):
+    EventKey::EventKey(const std::uint16_t t_keycode):
     keycode(t_keycode)
     { }
 
@@ -19,7 +19,7 @@ namespace CylinderBank
 //##############################################################################
 // class CylinderBank::EventKeyPressed
 
-    EventKeyPressed::EventKeyPressed(const uint16_t t_keycode,
+    EventKeyPressed::EventKeyPressed(const std::uint16_t t_keycode,
                                      const bool t_repeated):
     EventKey(t_keycode),
     repeated(t_repeated)

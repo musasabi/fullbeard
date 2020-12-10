@@ -47,18 +47,18 @@ namespace CylinderBank
     class EventMouseButton : public Event
     {
         public:
-            inline  uint16_t get_keycode()   const { return keycode; }
+            inline  std::uint16_t get_keycode()   const { return keycode; }
             virtual int get_category_flags() const override;
 
         protected:
-            EventMouseButton(const uint16_t t_keycode);
-            uint16_t keycode;
+            EventMouseButton(const std::uint16_t t_keycode);
+            std::uint16_t keycode;
     };
 
     class EventMouseButtonPressed : public EventMouseButton
     {
         public:
-            EventMouseButtonPressed(const uint16_t t_keycode,
+            EventMouseButtonPressed(const std::uint16_t t_keycode,
                                     const bool t_repeated);
 
             inline bool is_repeated() const { return repeated; }
@@ -74,7 +74,7 @@ namespace CylinderBank
     class EventMouseButtonReleased : public EventMouseButton
     {
         public:
-            EventMouseButtonReleased(const uint16_t t_keycode);
+            EventMouseButtonReleased(const std::uint16_t t_keycode);
 
             virtual std::string to_string() const override;
             virtual EventType get_event_type()  const override;

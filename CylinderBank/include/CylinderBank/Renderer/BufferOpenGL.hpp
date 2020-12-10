@@ -17,9 +17,13 @@ namespace CylinderBank
             void bind() const override;
             void unbind() const override;
 
+            virtual void set_layout(const BufferLayout&) override;
+            virtual const BufferLayout& get_layout() const override;
+
         private:
             std::uint32_t buffer_handle;
-    };    
+            BufferLayout layout;
+    };        
 
     class IndexBufferOpenGL : public IndexBuffer
     {

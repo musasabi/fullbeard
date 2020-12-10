@@ -67,7 +67,7 @@ namespace CylinderBank
 //##############################################################################
 // class CylinderBank::EventMouseButton
 
-    EventMouseButton::EventMouseButton(const uint16_t t_keycode):
+    EventMouseButton::EventMouseButton(const std::uint16_t t_keycode):
     keycode(t_keycode)
     { }
 
@@ -79,7 +79,7 @@ namespace CylinderBank
 //##############################################################################
 // class CylinderBank::EventMouseButtonPressed
 
-    EventMouseButtonPressed::EventMouseButtonPressed(const uint16_t t_keycode,
+    EventMouseButtonPressed::EventMouseButtonPressed(const std::uint16_t t_keycode,
                                                      const bool t_repeated):
     EventMouseButton(t_keycode),
     repeated(t_repeated)
@@ -108,7 +108,7 @@ namespace CylinderBank
 //##############################################################################
 // class CylinderBank::EventMouseButtonReleased
 
-    EventMouseButtonReleased::EventMouseButtonReleased(const uint16_t t_keycode):
+    EventMouseButtonReleased::EventMouseButtonReleased(const std::uint16_t t_keycode):
     EventMouseButton(t_keycode)
     { }
 

@@ -14,20 +14,30 @@ namespace CylinderBank
 		glBufferData(GL_ARRAY_BUFFER, (GLsizeiptr) t_size,
                      t_vertices, GL_STATIC_DRAW);
     }
-    
+
     VertexBufferOpenGL::~VertexBufferOpenGL()
     {
         glDeleteBuffers(1, &buffer_handle);
     }
-    
+
     void VertexBufferOpenGL::bind() const
     {
         glBindBuffer(GL_ARRAY_BUFFER, buffer_handle);
     }
-    
+
     void VertexBufferOpenGL::unbind() const
     {
         glBindBuffer(GL_ARRAY_BUFFER, 0);
+    }
+
+    void VertexBufferOpenGL::set_layout(const BufferLayout& t_layout)
+    {
+        layout = t_layout;
+    }
+
+    const BufferLayout& VertexBufferOpenGL::get_layout() const
+    {
+        return layout;
     }
 
     IndexBufferOpenGL::IndexBufferOpenGL(const float *t_vertices,
@@ -36,17 +46,17 @@ namespace CylinderBank
         CB_UNUSED(t_vertices);
         CB_UNUSED(t_count);
     }
-    
+
     IndexBufferOpenGL::~IndexBufferOpenGL()
     {
         glDeleteBuffers(1, &buffer_handle);
     }
-    
+
     void IndexBufferOpenGL::bind() const
     {
         glBindBuffer(GL_ARRAY_BUFFER, buffer_handle);
     }
-    
+
     void IndexBufferOpenGL::unbind() const
     {
         glBindBuffer(GL_ARRAY_BUFFER, 0);

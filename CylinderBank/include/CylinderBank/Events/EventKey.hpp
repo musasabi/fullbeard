@@ -10,18 +10,18 @@ namespace CylinderBank
     class EventKey : public Event
     {
         public:
-            inline  uint16_t get_keycode()   const { return keycode; }
+            inline  std::uint16_t get_keycode()   const { return keycode; }
             virtual int get_category_flags() const override;
 
         protected:
-            EventKey(const uint16_t t_keycode);
-            uint16_t keycode;
+            EventKey(const std::uint16_t t_keycode);
+            std::uint16_t keycode;
     };
 
     class EventKeyPressed : public EventKey
     {
         public:
-            EventKeyPressed(const uint16_t t_keycode, const bool t_repeated);
+            EventKeyPressed(const std::uint16_t t_keycode, const bool t_repeated);
         	~EventKeyPressed() = default;
 
             inline bool is_repeated() const { return repeated; }
@@ -37,7 +37,7 @@ namespace CylinderBank
     class EventKeyReleased : public EventKey
     {
         public:
-            EventKeyReleased(const uint16_t t_keycode);
+            EventKeyReleased(const std::uint16_t t_keycode);
         	~EventKeyReleased() = default;
 
             virtual std::string to_string() const override;
@@ -48,7 +48,7 @@ namespace CylinderBank
     class EventKeyTyped : public EventKey
     {
         public:
-            EventKeyTyped(const uint16_t t_keycode);
+            EventKeyTyped(const std::uint16_t t_keycode);
         	~EventKeyTyped() = default;
 
             virtual std::string to_string() const override;

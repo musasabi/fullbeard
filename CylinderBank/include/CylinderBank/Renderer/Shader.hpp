@@ -22,7 +22,7 @@ namespace CylinderBank
             void unbind() const;
 
         private:
-            uint32_t shader_id;
+            std::uint32_t shader_id;
     };
 }
 

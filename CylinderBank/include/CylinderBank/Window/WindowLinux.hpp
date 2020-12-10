@@ -11,8 +11,8 @@ namespace CylinderBank
     struct WindowData
     {
         std::string title;
-        uint16_t width;
-        uint16_t height;
+        std::uint16_t width;
+        std::uint16_t height;
         bool vsync;
 
         std::function<void(Event &)> event_callback;
@@ -30,11 +30,11 @@ namespace CylinderBank
             WindowLinux& operator=(const WindowLinux &) = default;
             WindowLinux& operator=(WindowLinux &&)      = default;
 
-            inline virtual uint16_t get_width() const override
+            inline virtual std::uint16_t get_width() const override
             {
                 return data.width;
             };
-            inline virtual uint16_t get_height() const override
+            inline virtual std::uint16_t get_height() const override
             {
                 return data.height;
             };

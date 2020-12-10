@@ -10,6 +10,24 @@ namespace CylinderBank
 {
     Application * Application::instance = nullptr;
 
+    static GLenum shader_data_type_to_GL_type(ShaderDataType t_type)
+    {
+        switch(t_type)
+        {
+            case ShaderDataType::Float : return GL_FLOAT;
+            case ShaderDataType::Float2: return GL_FLOAT;
+            case ShaderDataType::Float3: return GL_FLOAT;
+            case ShaderDataType::Float4: return GL_FLOAT;
+            case ShaderDataType::None:
+            default:
+            {
+                CB_ASSERT_CORE(false, "Unknown ShaderDataType while "
+                                        "getting component count.");
+                return GL_FALSE;
+            }
+        }
+    }
+
     Application::Application()
     {
         CB_ASSERT_CORE(instance == nullptr,
@@ -24,47 +42,73 @@ namespace CylinderBank
 		glGenVertexArrays(1, &vertex_array);
 		glBindVertexArray(vertex_array);
 
-        float vertices[3 * 3] =
+        float vertices[3 * (3 + 4)] =
         {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.0f,  0.5f, 0.0f
+            // x      y     z     r     g     b     a
+			-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.3f, 1.0f,
+			 0.5f, -0.5f, 0.0f, 0.2f, 0.8f, 0.3f, 1.0f,
+			 0.0f,  0.5f, 0.0f, 0.2f, 0.3f, 0.8f, 1.0f
 		};
 
         vertex_buffer.reset(VertexBuffer::create(vertices, sizeof(vertices)));
+        {
+            BufferLayout layout = {
+                { ShaderDataType::Float3, "a_position" },
+                { ShaderDataType::Float4, "a_color" },
+            };
+            vertex_buffer->set_layout(layout);
+        }
 
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE,
-                              3 * sizeof(float), nullptr);
+        std::uint32_t index = 0;
+        for(const auto &element : vertex_buffer->get_layout())
+        {
+            glEnableVertexAttribArray(index);
+
+            glVertexAttribPointer(
+                index,
+                (GLint) element.get_component_count(),
+                shader_data_type_to_GL_type(element.type),
+                element.normalized ? GL_TRUE : GL_FALSE,
+                (GLint) vertex_buffer->get_layout().get_stride(),
+                (const void *) element.offset
+            );
+
+            index++;
+        }
 
 		glGenBuffers(1, &index_buffer);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, index_buffer);
 
 		unsigned int indices[3] = { 0, 1, 2 };
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER,
+                     sizeof(indices),
+                     indices,
+                     GL_STATIC_DRAW);
 
         std::string vertex_source = R"(
-            #version 330 core
+			#version 330 core
 
-            layout(location = 0) in vec3 a_position;
-            out vec4 v_position;
+			layout(location = 0) in vec3 a_position;
+			layout(location = 1) in vec4 a_color;
 
-            void main()
-            {
-                gl_Position = vec4(a_position, 1.0);
-                v_position  = vec4(a_position, 1.0);
-            }
+			out vec4 v_color;
+
+			void main()
+			{
+				gl_Position = vec4(a_position, 1.0);
+				v_color = a_color;
+			}
         )";
 
         std::string fragment_source = R"(
             #version 330 core
 
             layout(location = 0) out vec4 color;
-            in vec4 v_position;
+            in vec4 v_color;
 
             void main()
             {
-                color = v_position;
+                color = v_color;
             }
         )";
 
@@ -113,7 +157,7 @@ namespace CylinderBank
             layer++)
         {
             (*layer)->on_event(t_event);
-            
+
             if(t_event.handled)
             {
                 break;

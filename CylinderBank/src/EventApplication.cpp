@@ -7,8 +7,8 @@ namespace CylinderBank
 //##############################################################################
 // class CylinderBank::EventWindowResize
 
-    EventWindowResize::EventWindowResize(const uint16_t t_width,
-                                         const uint16_t t_height):
+    EventWindowResize::EventWindowResize(const std::uint16_t t_width,
+                                         const std::uint16_t t_height):
     width(t_width),
     height(t_height)
     { }

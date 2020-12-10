@@ -10,7 +10,8 @@ namespace CylinderBank
     class EventWindowResize : public Event
     {
         public:
-            EventWindowResize(const uint16_t t_width, const uint16_t t_height);
+            EventWindowResize(const std::uint16_t t_width,
+                              const std::uint16_t t_height);
         	~EventWindowResize() = default;
         	
         	EventWindowResize(const EventWindowResize &) = default;
@@ -19,8 +20,8 @@ namespace CylinderBank
         	EventWindowResize& operator=(const EventWindowResize &) = default;
         	EventWindowResize& operator=(EventWindowResize &&)      = default;
 
-            inline uint16_t get_width()  const { return width;  }
-            inline uint16_t get_height() const { return height; }
+            inline std::uint16_t get_width()  const { return width;  }
+            inline std::uint16_t get_height() const { return height; }
 
             virtual std::string to_string() const override;
             virtual int get_category_flags() const override;
@@ -28,8 +29,8 @@ namespace CylinderBank
             static  EventType get_static_type();
 
         private:
-            uint16_t width;
-            uint16_t height;
+            std::uint16_t width;
+            std::uint16_t height;
     };
 
 	class EventWindowClose : public Event
