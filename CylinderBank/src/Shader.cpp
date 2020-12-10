@@ -34,7 +34,8 @@ namespace CylinderBank
             std::vector<GLchar> log((std::uint32_t) log_length);
             glGetShaderInfoLog(vertex_shader, log_length,
                                &log_length, &log[0]);
-            Log::core_error("Vertex shader compilation failed:\n{0}\n", log.data());
+            Log::core_error("Vertex shader compilation failed:\n{0}\n",
+                            log.data());
 
             glDeleteShader(vertex_shader);
             glDeleteShader(fragment_shader);
@@ -51,7 +52,8 @@ namespace CylinderBank
             std::vector<GLchar> log((std::uint32_t) log_length);
             glGetShaderInfoLog(fragment_shader, log_length,
                                &log_length, &log[0]);
-            Log::core_error("Fragment shader compilation failed:\n{0}\n", log.data());
+            Log::core_error("Fragment shader compilation failed:\n{0}\n",
+                            log.data());
 
             glDeleteShader(vertex_shader);
             glDeleteShader(fragment_shader);

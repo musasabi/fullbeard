@@ -1,0 +1,13 @@
+PROJECT_NAME     = CylinderBank
+OUTPUT_DIRECTORY = docs/
+WARNINGS         = YES
+INPUT            = CylinderBank/
+RECURSIVE        = YES
+FILE_PATTERNS    = *.c   \
+                   *.cc  \
+                   *.cxx \
+                   *.cpp \
+                   *.h   \
+                   *.hh  \
+                   *.hxx \
+                   *.hpp

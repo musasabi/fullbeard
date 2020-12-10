@@ -6,6 +6,9 @@
 
 namespace CylinderBank
 {
+//##############################################################################
+// class CylinderBank::VertexBufferOpenGL
+
     VertexBufferOpenGL::VertexBufferOpenGL(const float *t_vertices,
                                            const std::size_t t_size)
     {
@@ -39,6 +42,9 @@ namespace CylinderBank
     {
         return layout;
     }
+
+//##############################################################################
+// class IndexBufferOpenGL::VertexBufferOpenGL
 
     IndexBufferOpenGL::IndexBufferOpenGL(const float *t_vertices,
                                          const std::size_t t_count)

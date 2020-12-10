@@ -1,6 +1,15 @@
 #ifndef CB_BUFFER_HPP__
 #define CB_BUFFER_HPP__
 
+/**
+ * @file Buffer.hpp
+ * @brief Contains the abstract and helper classes for shader buffers.
+ *
+ * The base classes (VertexBuffer and IndexBuffer) both make use of the other
+ * structs and classes in this file to automate and abstract away the nitty
+ * gritty of the rendering API.
+ */
+
 #include "../cb_util.hpp"
 
 #include <cstddef>
@@ -8,12 +17,20 @@
 
 namespace CylinderBank
 {
+    /**
+     * @brief Useful in ranslating between Float3 and vec3, for example.
+     */
     enum class ShaderDataType
     {
         None,
-        Float, Float2, Float3, Float4
+        Float, Float2, Float3, Float4,
     };
 
+    /**
+     * @brief Provide the size of the given ShaderDataType
+     * @param t_type Type of shader data to query.
+     * @return Size of shader data type, or zero on error.
+     */
     static std::size_t sizeof_ShaderDataType(const ShaderDataType t_type)
     {
         switch(t_type)
@@ -32,15 +49,24 @@ namespace CylinderBank
         }
     }
 
+    /**
+     * @brief Describes one element of a buffer.
+     */
     struct BufferElement
     {
-        ShaderDataType type;
-        std::string    name;
-        std::size_t    size;
-        std::size_t    offset;
-        bool           normalized;
+        ShaderDataType type;       ///< Type of data within the element
+        std::string    name;       ///< Name of the element.
+        std::size_t    size;       ///< Size of the element.
+        std::size_t    offset;     ///< Distance from zero to the element
+        bool           normalized; ///< Is the element normalized?
 
         BufferElement() = delete;
+        /**
+         * @param t_type The data type of the buffer element.
+         * @param t_name The name corresponding with the shader source.
+         * @param t_normalized
+         *     Whether the data is normalized; defautls to false.
+         */
         BufferElement(ShaderDataType t_type,
                       std::string    t_name,
                       bool           t_normalized = false):
@@ -51,6 +77,9 @@ namespace CylinderBank
             normalized(t_normalized)
         { }
 
+        /**
+         * @return Number of components within the element.
+         */
         std::uint32_t get_component_count() const
         {
             switch(type)
@@ -71,10 +100,17 @@ namespace CylinderBank
 
     };
 
+    /**
+     * @class BufferLayout
+     * @brief Describes the arrangement of the buffer in memory.
+     */
     class BufferLayout
     {
         public:
             BufferLayout() = default;
+            /**
+             * @param t_elements The elements to hold in this buffer.
+             */
             BufferLayout(const std::initializer_list<BufferElement>
                            &t_elements):
                 elements(t_elements),
@@ -83,12 +119,21 @@ namespace CylinderBank
                 calculate_offsets_and_stride();
             }
 
+            /**
+             * @return The stride of the data.
+             */
             std::size_t get_stride() const { return stride; }
 
+            /**
+             * @return The beginning of the elements vector.
+             */
             std::vector<BufferElement>::const_iterator begin() const
             {
                 return elements.begin();
             }
+            /**
+             * @return The end of the elements vector.
+             */
             std::vector<BufferElement>::const_iterator end() const
             {
                 return elements.end();
@@ -112,6 +157,10 @@ namespace CylinderBank
             std::size_t stride;
     };
 
+    /**
+     * @class VertexBuffer
+     * @brief Abstract base class for vertex buffers
+     */
     class VertexBuffer
     {
         public:
@@ -127,7 +176,10 @@ namespace CylinderBank
                                         const std::size_t); // size
     };
 
-    class IndexBuffer
+    /**
+     * @class IndexBuffer
+     * @brief Abstract base class for indexBuffers buffers
+     */class IndexBuffer
     {
         public:
             virtual ~IndexBuffer() { }
