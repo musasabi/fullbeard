@@ -1,4 +1,4 @@
-#include "CylinderBank_pch.hpp"
+#include "cb_pch.hpp"
 #include "glad/glad.h"
 
 #include "Renderer/Shader.hpp"
@@ -31,7 +31,7 @@ namespace CylinderBank
             GLint log_length = 0;
             glGetShaderiv(vertex_shader, GL_INFO_LOG_LENGTH, &log_length);
 
-            std::vector<GLchar> log((uint32_t) log_length);
+            std::vector<GLchar> log((std::uint32_t) log_length);
             glGetShaderInfoLog(vertex_shader, log_length,
                                &log_length, &log[0]);
             Log::core_error("Vertex shader compilation failed:\n{0}\n", log.data());
@@ -48,7 +48,7 @@ namespace CylinderBank
             GLint log_length = 0;
             glGetShaderiv(fragment_shader, GL_INFO_LOG_LENGTH, &log_length);
 
-            std::vector<GLchar> log((uint32_t) log_length);
+            std::vector<GLchar> log((std::uint32_t) log_length);
             glGetShaderInfoLog(fragment_shader, log_length,
                                &log_length, &log[0]);
             Log::core_error("Fragment shader compilation failed:\n{0}\n", log.data());
@@ -72,7 +72,7 @@ namespace CylinderBank
             GLint log_length = 0;
             glGetProgramiv(shader_id, GL_INFO_LOG_LENGTH, &log_length);
 
-            std::vector<GLchar> log((uint32_t) log_length);
+            std::vector<GLchar> log((std::uint32_t) log_length);
             glGetProgramInfoLog(shader_id, log_length, &log_length, &log[0]);
             Log::core_error("Shader linking failed:\n{0}\n", log.data());
 

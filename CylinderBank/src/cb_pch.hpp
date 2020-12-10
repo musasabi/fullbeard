@@ -18,7 +18,6 @@
 
 #include <vector>
 
-
 // CylinderBank libraries of interest
 #include "Systems/Log.hpp"
 

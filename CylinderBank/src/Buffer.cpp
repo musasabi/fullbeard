@@ -1,6 +1,6 @@
-#include "CylinderBank_pch.hpp"
+#include "cb_pch.hpp"
 #include "glad/glad.h"
-#include "util.hpp"
+#include "cb_util.hpp"
 
 #include "Renderer/BufferOpenGL.hpp"
 

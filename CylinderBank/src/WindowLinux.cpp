@@ -1,8 +1,8 @@
-#include "CylinderBank_pch.hpp"
+#include "cb_pch.hpp"
+#include "cb_util.hpp"
 
 #include "Window/WindowLinux.hpp"
 
-#include "util.hpp"
 #include "Events/EventApplication.hpp"
 #include "Events/EventMouse.hpp"
 #include "Events/EventKey.hpp"

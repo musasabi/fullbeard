@@ -11,7 +11,7 @@ add_library(
 
 target_precompile_headers(
     CylinderBank PRIVATE
-    "CylinderBank_pch.hpp"
+    "cb_pch.hpp"
 )
 
 target_include_directories(

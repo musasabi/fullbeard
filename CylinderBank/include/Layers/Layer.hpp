@@ -2,7 +2,7 @@
 #define CB_LAYER_HPP__
 
 #include "../Events/Event.hpp"
-#include "../util.hpp"
+#include "../cb_util.hpp"
 
 #include <string>
 
@@ -14,7 +14,7 @@ namespace CylinderBank
             Layer(const std::string &t_name = "Layer"):
                 debug_name(t_name)
             { }
-            
+
             virtual ~Layer() = default;
 
             virtual void on_push()   { };

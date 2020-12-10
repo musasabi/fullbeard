@@ -1,7 +1,7 @@
 #ifndef CB_BUFFER_HPP__
 #define CB_BUFFER_HPP__
 
-#include "../util.hpp"
+#include "../cb_util.hpp"
 
 #include <cstddef>
 #include <string>

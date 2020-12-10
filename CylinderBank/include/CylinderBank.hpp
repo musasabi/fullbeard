@@ -1,7 +1,7 @@
 #ifndef CB_HPP__
 #define CB_HPP__
 
-#include "util.hpp"
+#include "cb_util.hpp"
 #include "Systems/Log.hpp"
 #include "Systems/Application.hpp"
 

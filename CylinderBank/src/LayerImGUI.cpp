@@ -1,4 +1,5 @@
-#include "CylinderBank_pch.hpp"
+#include "cb_pch.hpp"
+#include "cb_util.hpp"
 
 #include "Layers/LayerImGUI.hpp"
 
@@ -8,7 +9,6 @@
 #include "GLFW/glfw3.h"
 
 #include "Systems/Application.hpp"
-#include "util.hpp"
 #include "Input/keycodes.hpp"
 
 namespace CylinderBank
