@@ -1,6 +1,6 @@
 #include "CylinderBank_pch.hpp"
 
-#include "CylinderBank/Events/EventKey.hpp"
+#include "Events/EventKey.hpp"
 
 namespace CylinderBank
 {

@@ -1,4 +1,4 @@
-#include "CylinderBank/Systems/Log.hpp"
+#include "Systems/Log.hpp"
 #include <spdlog/sinks/stdout_color_sinks.h>
 
 namespace CylinderBank

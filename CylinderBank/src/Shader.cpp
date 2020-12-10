@@ -1,9 +1,9 @@
 #include "CylinderBank_pch.hpp"
 #include "glad/glad.h"
 
-#include "CylinderBank/Renderer/Shader.hpp"
+#include "Renderer/Shader.hpp"
 
-#include "CylinderBank/CylinderBank.hpp"
+#include "CylinderBank.hpp"
 
 namespace CylinderBank
 {
@@ -35,7 +35,7 @@ namespace CylinderBank
             glGetShaderInfoLog(vertex_shader, log_length,
                                &log_length, &log[0]);
             Log::core_error("Vertex shader compilation failed:\n{0}\n", log.data());
-            
+
             glDeleteShader(vertex_shader);
             glDeleteShader(fragment_shader);
 
@@ -75,7 +75,7 @@ namespace CylinderBank
             std::vector<GLchar> log((uint32_t) log_length);
             glGetProgramInfoLog(shader_id, log_length, &log_length, &log[0]);
             Log::core_error("Shader linking failed:\n{0}\n", log.data());
-            
+
             glDeleteProgram(shader_id);
 
             glDeleteShader(vertex_shader);
@@ -88,7 +88,7 @@ namespace CylinderBank
         glDetachShader(shader_id, fragment_shader);
     }
 
-    Shader::~Shader() 
+    Shader::~Shader()
     {
         glDeleteProgram(shader_id);
     }

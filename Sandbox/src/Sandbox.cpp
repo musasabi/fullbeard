@@ -1,4 +1,4 @@
-#include <CylinderBank/CylinderBank.hpp>
+#include <CylinderBank.hpp>
 
 #include <iostream>
 

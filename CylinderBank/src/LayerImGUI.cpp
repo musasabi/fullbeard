@@ -1,15 +1,15 @@
 #include "CylinderBank_pch.hpp"
 
-#include "CylinderBank/Layers/LayerImGUI.hpp"
+#include "Layers/LayerImGUI.hpp"
 
 #include "imgui.h"
 #include "imgui_impl_opengl3.h"
 #include "imgui_impl_glfw.h"
 #include "GLFW/glfw3.h"
 
-#include "CylinderBank/Systems/Application.hpp"
-#include "CylinderBank/util.hpp"
-#include "CylinderBank/Input/keycodes.hpp"
+#include "Systems/Application.hpp"
+#include "util.hpp"
+#include "Input/keycodes.hpp"
 
 namespace CylinderBank
 {
@@ -25,7 +25,7 @@ namespace CylinderBank
 
 //TODO test ImGui docking/etc on Windows, too
 
-    void LayerImGUI::on_push() 
+    void LayerImGUI::on_push()
     {
         IMGUI_CHECKVERSION();
         ImGui::CreateContext();
@@ -47,7 +47,7 @@ namespace CylinderBank
         ImGui_ImplOpenGL3_Init("#version 460");
     }
 
-    void LayerImGUI::on_pop() 
+    void LayerImGUI::on_pop()
     {
         ImGui_ImplOpenGL3_Shutdown();
         ImGui_ImplGlfw_Shutdown();

@@ -1,12 +1,12 @@
 #include "CylinderBank_pch.hpp"
 
-#include "CylinderBank/Window/WindowLinux.hpp"
+#include "Window/WindowLinux.hpp"
 
-#include "CylinderBank/util.hpp"
-#include "CylinderBank/Events/EventApplication.hpp"
-#include "CylinderBank/Events/EventMouse.hpp"
-#include "CylinderBank/Events/EventKey.hpp"
-#include "CylinderBank/Renderer/ContextOpenGL.hpp"
+#include "util.hpp"
+#include "Events/EventApplication.hpp"
+#include "Events/EventMouse.hpp"
+#include "Events/EventKey.hpp"
+#include "Renderer/ContextOpenGL.hpp"
 
 namespace CylinderBank
 {

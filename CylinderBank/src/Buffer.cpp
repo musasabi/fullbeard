@@ -1,10 +1,10 @@
 #include "CylinderBank_pch.hpp"
 #include "glad/glad.h"
-#include "CylinderBank/util.hpp"
+#include "util.hpp"
 
-#include "CylinderBank/Renderer/BufferOpenGL.hpp"
+#include "Renderer/BufferOpenGL.hpp"
 
-#include "CylinderBank/Renderer/Renderer.hpp"
+#include "Renderer/Renderer.hpp"
 
 namespace CylinderBank
 {

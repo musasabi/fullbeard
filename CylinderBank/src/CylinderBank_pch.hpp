@@ -20,6 +20,6 @@
 
 
 // CylinderBank libraries of interest
-#include "CylinderBank/Systems/Log.hpp"
+#include "Systems/Log.hpp"
 
 #endif //CB_PCH_HPP__

@@ -1,10 +1,10 @@
 #include "CylinderBank_pch.hpp"
 #include "glad/glad.h"
-#include "CylinderBank/CylinderBank.hpp"
+#include "CylinderBank.hpp"
 
-#include "CylinderBank/Systems/Application.hpp"
+#include "Systems/Application.hpp"
 
-#include "CylinderBank/Input/Input.hpp"
+#include "Input/Input.hpp"
 
 namespace CylinderBank
 {

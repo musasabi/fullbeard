@@ -1,6 +1,6 @@
 #include "CylinderBank_pch.hpp"
 
-#include "CylinderBank/Systems/LayerStack.hpp"
+#include "Systems/LayerStack.hpp"
 
 namespace CylinderBank
 {

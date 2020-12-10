@@ -13,6 +13,7 @@ namespace CylinderBank
     {
         public:
             inline static RendererAPI GetAPI() { return api; }
+            void temp();
 
         private:
             static RendererAPI api;
