@@ -12,6 +12,12 @@ namespace CylinderBank
                    const std::string &t_fragment_source);
             ~Shader();
 
+            Shader(const Shader&) = delete;
+            Shader(Shader&&)      = default;
+
+            Shader& operator=(const Shader&) = delete;
+            Shader& operator=(Shader&&)      = default;
+
             void bind() const;
             void unbind() const;
 
