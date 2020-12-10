@@ -1,11 +1,10 @@
 #include "CylinderBank_pch.hpp"
-
 #include "glad/glad.h"
+#include "CylinderBank/CylinderBank.hpp"
 
 #include "CylinderBank/Systems/Application.hpp"
 
 #include "CylinderBank/Input/Input.hpp"
-#include "CylinderBank/CylinderBank.hpp"
 
 namespace CylinderBank
 {
@@ -25,19 +24,18 @@ namespace CylinderBank
 		glGenVertexArrays(1, &vertex_array);
 		glBindVertexArray(vertex_array);
 
-		glGenBuffers(1, &vertex_buffer);
-		glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer);
-
-		float vertices[3 * 3] = {
+        float vertices[3 * 3] =
+        {
 			-0.5f, -0.5f, 0.0f,
 			 0.5f, -0.5f, 0.0f,
 			 0.0f,  0.5f, 0.0f
 		};
 
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+        vertex_buffer.reset(VertexBuffer::create(vertices, sizeof(vertices)));
 
 		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE,
+                              3 * sizeof(float), nullptr);
 
 		glGenBuffers(1, &index_buffer);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, index_buffer);

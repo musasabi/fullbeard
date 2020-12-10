@@ -6,6 +6,7 @@
 #include "../Systems/LayerStack.hpp"
 #include "../Layers/LayerImGUI.hpp"
 #include "../Renderer/Shader.hpp"
+#include "../Renderer/Buffer.hpp"
 
 #include "GLFW/glfw3.h"
 
@@ -41,13 +42,13 @@ namespace CylinderBank
             LayerStack layer_stack;
             LayerImGUI *layer_imgui;
 
-            std::unique_ptr<Shader> shader;
-
             bool running = false;
 
             GLuint vertex_array;
-            GLuint vertex_buffer;
             GLuint index_buffer;
+
+            std::unique_ptr<Shader> shader;
+            std::unique_ptr<VertexBuffer> vertex_buffer;
     };
 }
 

@@ -1,8 +1,8 @@
 #include "CylinderBank_pch.hpp"
+#include "glad/glad.h"
 
 #include "CylinderBank/Renderer/Shader.hpp"
 
-#include "glad/glad.h"
 #include "CylinderBank/CylinderBank.hpp"
 
 namespace CylinderBank
