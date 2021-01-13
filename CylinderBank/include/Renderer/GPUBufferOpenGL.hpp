@@ -1,7 +1,7 @@
-#ifndef CB_BUFFEROPENGL_HPP__
-#define CB_BUFFEROPENGL_HPP__
+#ifndef CB_GPU_BUFFER_OPENGL_HPP__
+#define CB_GPU_BUFFER_OPENGL_HPP__
 
-#include "Buffer.hpp"
+#include "GPUBuffer.hpp"
 
 #include <cstdint>
 
@@ -23,7 +23,7 @@ namespace CylinderBank
         private:
             std::uint32_t buffer_handle;
             BufferLayout layout;
-    };        
+    };
 
     class IndexBufferOpenGL : public IndexBuffer
     {
@@ -41,4 +41,4 @@ namespace CylinderBank
     };
 }
 
-#endif // CB_BUFFEROPENGL_HPP__
+#endif // CB_GPU_BUFFER_OPENGL_HPP__

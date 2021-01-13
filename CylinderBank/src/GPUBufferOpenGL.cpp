@@ -2,7 +2,7 @@
 #include "glad/glad.h"
 #include "cb_util.hpp"
 
-#include "Renderer/BufferOpenGL.hpp"
+#include "Renderer/GPUBufferOpenGL.hpp"
 
 namespace CylinderBank
 {

@@ -6,7 +6,7 @@
 #include "../Systems/LayerStack.hpp"
 #include "../Layers/LayerImGUI.hpp"
 #include "../Renderer/Shader.hpp"
-#include "../Renderer/Buffer.hpp"
+#include "../Renderer/GPUBuffer.hpp"
 
 #include "GLFW/glfw3.h"
 
@@ -17,10 +17,10 @@ namespace CylinderBank
         public:
             Application();
             virtual ~Application() = default;
-            
+
             Application(const Application &) = default;
             Application(Application &&)      = default;
-            
+
             Application& operator=(const Application &) = default;
             Application& operator=(Application &&)      = default;
 

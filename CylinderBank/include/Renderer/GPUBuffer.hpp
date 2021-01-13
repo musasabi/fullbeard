@@ -1,8 +1,8 @@
-#ifndef CB_BUFFER_HPP__
-#define CB_BUFFER_HPP__
+#ifndef CB_GPU_BUFFER_HPP__
+#define CB_GPU_BUFFER_HPP__
 
 /**
- * @file Buffer.hpp
+ * @file GPUBuffer.hpp
  * @brief Contains the abstract and helper classes for shader buffers.
  *
  * The base classes (VertexBuffer and IndexBuffer) both make use of the other
@@ -192,4 +192,4 @@ namespace CylinderBank
     };
 }
 
-#endif // CB_BUFFER_HPP__
+#endif // CB_GPU_BUFFER_HPP__
