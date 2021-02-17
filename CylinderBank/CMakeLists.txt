@@ -6,7 +6,6 @@ find_package(OpenGL  REQUIRED)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
 
-find_package(glad   REQUIRED)
 find_package(glfw3  REQUIRED)
 find_package(fmt    REQUIRED)
 find_package(spdlog REQUIRED)

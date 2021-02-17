@@ -35,12 +35,11 @@ target_include_directories(
     imgui PRIVATE
     ${imgui_SOURCE_DIR}
     ${imgui_SOURCE_DIR}/backends
-    ${glad_BINARY_DIR}/include # so imgui can find glad
+    ${CMAKE_SOURCE_DIR}/CylinderBank/include # so imgui can find glad
 )
 
 target_link_libraries(
     imgui PRIVATE
-    glad
     glfw
     ${OPENGL_LIBRARY}
 )

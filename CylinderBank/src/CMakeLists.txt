@@ -2,6 +2,7 @@ file(
     GLOB_RECURSE library_source
     "${CMAKE_CURRENT_SOURCE_DIR}/../*.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/../*.hpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/glad.c"
 )
 
 add_library(
@@ -11,12 +12,13 @@ add_library(
 
 target_precompile_headers(
     CylinderBank PRIVATE
-    "cb_pch.hpp"
+    "$<$<COMPILE_LANGUAGE:CXX>:${CMAKE_CURRENT_SOURCE_DIR}/cb_pch.hpp>"
 )
 
 target_include_directories(
     CylinderBank PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/../include
+    ${CMAKE_CURRENT_SOURCE_DIR}/../include/CylinderBank
     ${imgui_SOURCE_DIR}
     ${imgui_SOURCE_DIR}/backends
     ${glm_SOURCE_DIR}
@@ -24,9 +26,9 @@ target_include_directories(
 
 target_link_libraries(
     CylinderBank
+    ${CMAKE_DL_LIBS}
     ${CMAKE_THREAD_LIBS_INIT}
     OpenGL::GL
-    glad
     glfw
     fmt
     spdlog
@@ -36,6 +38,11 @@ target_link_libraries(
 target_compile_definitions(
     CylinderBank PUBLIC
     SPDLOG_FMT_EXTERNAL
+)
+
+set_source_files_properties(
+    "${CMAKE_CURRENT_SOURCE_DIR}/glad.c" PROPERTIES
+    COMPILE_FLAGS "-w"
 )
 
 if(UNIX)

@@ -67,9 +67,9 @@ namespace CylinderBank
          * @param t_normalized
          *     Whether the data is normalized; defautls to false.
          */
-        BufferElement(ShaderDataType t_type,
-                      std::string    t_name,
-                      bool           t_normalized = false):
+        BufferElement(const ShaderDataType t_type,
+                      const std::string   &t_name,
+                      const bool           t_normalized = false):
             type(t_type),
             name(t_name),
             size(sizeof_ShaderDataType(t_type)),
@@ -111,8 +111,8 @@ namespace CylinderBank
             /**
              * @param t_elements The elements to hold in this buffer.
              */
-            BufferLayout(const std::initializer_list<BufferElement>
-                           &t_elements):
+            BufferLayout(
+                const std::initializer_list<BufferElement> &t_elements):
                 elements(t_elements),
                 stride(0)
             {

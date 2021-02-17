@@ -51,7 +51,7 @@ namespace CylinderBank
             virtual int get_category_flags() const override;
 
         protected:
-            EventMouseButton(const std::uint16_t t_keycode);
+            explicit EventMouseButton(const std::uint16_t t_keycode);
             std::uint16_t keycode;
     };
 
@@ -74,7 +74,7 @@ namespace CylinderBank
     class EventMouseButtonReleased : public EventMouseButton
     {
         public:
-            EventMouseButtonReleased(const std::uint16_t t_keycode);
+            explicit EventMouseButtonReleased(const std::uint16_t t_keycode);
 
             virtual std::string to_string() const override;
             virtual EventType get_event_type()  const override;

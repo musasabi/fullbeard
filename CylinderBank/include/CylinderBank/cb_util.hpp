@@ -1,6 +1,8 @@
 #ifndef CB_UTIL_HPP__
 #define CB_UTIL_HPP__
 
+#include "Systems/Log.hpp"
+
 #include <csignal>
 
 // a macro to ensure you meant to leave out that variable

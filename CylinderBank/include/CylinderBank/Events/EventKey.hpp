@@ -14,7 +14,7 @@ namespace CylinderBank
             virtual int get_category_flags() const override;
 
         protected:
-            EventKey(const std::uint16_t t_keycode);
+            explicit EventKey(const std::uint16_t t_keycode);
             std::uint16_t keycode;
     };
 
@@ -37,7 +37,7 @@ namespace CylinderBank
     class EventKeyReleased : public EventKey
     {
         public:
-            EventKeyReleased(const std::uint16_t t_keycode);
+            explicit EventKeyReleased(const std::uint16_t t_keycode);
         	~EventKeyReleased() = default;
 
             virtual std::string to_string() const override;
@@ -48,7 +48,7 @@ namespace CylinderBank
     class EventKeyTyped : public EventKey
     {
         public:
-            EventKeyTyped(const std::uint16_t t_keycode);
+            explicit EventKeyTyped(const std::uint16_t t_keycode);
         	~EventKeyTyped() = default;
 
             virtual std::string to_string() const override;

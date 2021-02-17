@@ -32,7 +32,7 @@ namespace CylinderBank
     {
         friend class EventDispatcher;
 
-        public:        	
+        public:
             virtual std::string to_string()    const = 0;
             virtual int get_category_flags()   const = 0;
             virtual EventType get_event_type() const = 0;
@@ -43,7 +43,7 @@ namespace CylinderBank
             }
 
             bool handled = false;
-            
+
         protected:
         	Event()  = default;
     };
@@ -51,15 +51,8 @@ namespace CylinderBank
     class EventDispatcher
     {
         public:
-            EventDispatcher(Event &t_event):
+            explicit EventDispatcher(Event &t_event):
                 event(t_event) { }
-        	~EventDispatcher() = default;
-        	
-        	EventDispatcher(const EventDispatcher &) = default;
-        	EventDispatcher(EventDispatcher &&)      = default;
-        	
-        	EventDispatcher& operator=(const EventDispatcher &) = default;
-        	EventDispatcher& operator=(EventDispatcher &&)      = default;
 
             template<typename T>
             bool dispatch(std::function<bool(T&)> func)

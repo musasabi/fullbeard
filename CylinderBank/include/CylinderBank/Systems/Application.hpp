@@ -16,13 +16,6 @@ namespace CylinderBank
     {
         public:
             Application();
-            virtual ~Application() = default;
-
-            Application(const Application &) = default;
-            Application(Application &&)      = default;
-
-            Application& operator=(const Application &) = default;
-            Application& operator=(Application &&)      = default;
 
             void run();
 
